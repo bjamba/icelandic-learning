@@ -128,12 +128,6 @@
       document.getElementById('feedback').textContent = '';
     }
 
-    function playAudio(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'is-IS';
-      utterance.rate = 0.8;
-      window.speechSynthesis.speak(utterance);
-    }
 
     flashcard.addEventListener('click', () => {
       flashcard.classList.toggle('flipped');
@@ -141,7 +135,7 @@
 
     document.getElementById('play-btn').addEventListener('click', (e) => {
       e.stopPropagation();
-      playAudio(phrases[currentIndex].icelandic);
+      window.IcelandicAudio.play(phrases[currentIndex].icelandic);
     });
 
     document.getElementById('flip-btn').addEventListener('click', () => {

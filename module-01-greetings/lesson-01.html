@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lesson 1: Hello & Basic Greetings</title>
   <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/audio.js" defer></script>
   <style>
     /* Lesson-specific styles */
     .lesson-header {
@@ -242,16 +243,9 @@
         const text = this.closest('.phrase-card')?.querySelector('.phrase-icelandic')?.firstElementChild?.textContent ||
                      this.closest('.audio-player')?.querySelector('.audio-text')?.textContent ||
                      '';
-        if (text) playAudio(text);
+        if (text) window.IcelandicAudio.play(text);
       });
     });
-
-    function playAudio(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'is-IS';
-      utterance.rate = 0.85;
-      window.speechSynthesis.speak(utterance);
-    }
 
     // Quiz functionality
     document.querySelector('.check-btn').addEventListener('click', function() {

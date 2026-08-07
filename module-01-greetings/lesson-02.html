@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lesson 2: Introductions & Names</title>
   <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/audio.js" defer></script>
   <style>
     .lesson-header { text-align: center; padding: var(--space-lg) 0; }
     .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
@@ -168,16 +169,9 @@
         const text = this.parentElement.querySelector('.audio-text')?.textContent ||
                      this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
                      this.parentElement.previousElementSibling.textContent;
-        if (text) playAudio(text);
+        if (text) window.IcelandicAudio.play(text);
       });
     });
-
-    function playAudio(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'is-IS';
-      utterance.rate = 0.8;
-      window.speechSynthesis.speak(utterance);
-    }
 
     document.querySelector('.check-btn').addEventListener('click', function() {
       const options = document.querySelectorAll('.quiz-option');
