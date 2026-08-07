@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter — Icelandic Learning</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .tool-header { text-align: center; padding: var(--space-xl) 0; }
+    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-top: var(--space-xl); }
+    .converter-section { display: flex; flex-direction: column; gap: var(--space-md); }
+    .rate-info { background: var(--color-bg); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; }
+    .update-time { color: var(--color-text-light); font-size: 0.75rem; text-align: center; margin-top: var(--space-lg); }
+    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Currency Converter</span>
+  </nav>
+
+  <div class="container">
+    <div class="tool-header">
+      <h1>💱 Currency Converter</h1>
+      <p>Real-time Icelandic Króna (ISK) exchange rates</p>
+    </div>
+
+    <div class="card">
+      <h2>Convert to Icelandic Króna (ISK)</h2>
+      <div class="currency-converter">
+        <div class="converter-section">
+          <label for="from-amount" style="font-size: 0.85rem; color: var(--color-text-light);">Amount</label>
+          <input type="number" id="from-amount" class="currency-input" placeholder="100" value="100" min="0" step="any">
+        </div>
+
+        <div style="text-align: center;">
+          <label for="from-currency" style="font-size: 0.85rem; color: var(--color-text-light);">From</label>
+          <select id="from-currency" class="currency-select">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="CAD">CAD (C$)</option>
+            <option value="JPY">JPY (¥)</option>
+          </select>
+        </div>
+
+        <div class="currency-result">
+          <div class="currency-display">
+            <span id="to-amount" class="currency-input" style="background: var(--color-primary); color: white; font-size: 1.5rem;">13,700</span>
+          </div>
+          <div class="currency-select" style="margin-top: var(--space-sm);">
+            <span>ISK</span>
+          </div>
+          <div class="currency-rate" id="exchange-rate">1 USD = 137.00 ISK</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Convert from Icelandic Króna (ISK)</h2>
+      <div class="currency-converter">
+        <div class="converter-section">
+          <label for="isk-amount" style="font-size: 0.85rem; color: var(--color-text-light);">Amount (ISK)</label>
+          <input type="number" id="isk-amount" class="currency-input" placeholder="10000" value="10000" min="0" step="any">
+        </div>
+
+        <div style="text-align: center;">
+          <label for="to-currency" style="font-size: 0.85rem; color: var(--color-text-light);">To</label>
+          <select id="to-currency" class="currency-select">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP" selected>GBP (£)</option>
+            <option value="CAD">CAD (C$)</option>
+            <option value="JPY">JPY (¥)</option>
+          </select>
+        </div>
+
+        <div class="currency-result">
+          <div class="currency-display">
+            <span id="isk-result" class="currency-input" style="background: var(--color-primary); color: white; font-size: 1.5rem;">73.00</span>
+          </div>
+          <div class="currency-select" style="margin-top: var(--space-sm);">
+            <span id="to-currency-name">GBP</span>
+          </div>
+          <div class="currency-rate" id="isk-rate">1 ISK = 0.0073 GBP</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Current Rates</h2>
+      <div class="rate-info" id="rates-list">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+          <div><strong>USD:</strong> <span id="rate-usd">137.00</span> ISK</div>
+          <div><strong>EUR:</strong> <span id="rate-eur">147.50</span> ISK</div>
+          <div><strong>GBP:</strong> <span id="rate-gbp">172.60</span> ISK</div>
+          <div><strong>CAD:</strong> <span id="rate-cad">101.20</span> ISK</div>
+          <div><strong>JPY:</strong> <span id="rate-jpy">0.92</span> ISK</div>
+        </div>
+      </div>
+      <p class="update-time" id="update-time">Rates updated: Just now</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const RATES = {
+      USD: 137.00, EUR: 147.50, GBP: 172.60, CAD: 101.20, JPY: 0.92
+    };
+    const LAST_UPDATE = new Date();
+
+    function formatCurrency(amount, currency, isISK = false) {
+      if (isISK) return new Intl.NumberFormat('is-IS', { style: 'currency', currency: 'ISK' }).format(amount);
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: currency }).format(amount);
+    }
+
+    function convertToISK(amount, fromCurrency) { return amount * RATES[fromCurrency]; }
+    function convertFromISK(amountISK, toCurrency) { return amountISK / RATES[toCurrency]; }
+
+    function updateCalculations() {
+      const fromAmount = parseFloat(document.getElementById('from-amount').value) || 0;
+      const fromCurrency = document.getElementById('from-currency').value;
+      const iskAmount = convertToISK(fromAmount, fromCurrency);
+      document.getElementById('to-amount').textContent = new Intl.NumberFormat('is-IS').format(Math.round(iskAmount));
+      document.getElementById('exchange-rate').textContent = `1 ${fromCurrency} = ${RATES[fromCurrency].toFixed(2)} ISK`;
+
+      const iskInput = parseFloat(document.getElementById('isk-amount').value) || 0;
+      const toCurrency = document.getElementById('to-currency').value;
+      const result = convertFromISK(iskInput, toCurrency);
+      document.getElementById('isk-result').textContent = result.toFixed(2);
+      document.getElementById('isk-rate').textContent = `1 ISK = ${(1 / RATES[toCurrency]).toFixed(4)} ${toCurrency}`;
+    }
+
+    document.getElementById('rate-usd').textContent = RATES.USD.toFixed(2);
+    document.getElementById('rate-eur').textContent = RATES.EUR.toFixed(2);
+    document.getElementById('rate-gbp').textContent = RATES.GBP.toFixed(2);
+    document.getElementById('rate-cad').textContent = RATES.CAD.toFixed(2);
+    document.getElementById('rate-jpy').textContent = RATES.JPY.toFixed(2);
+    document.getElementById('update-time').textContent = `Rates updated: ${LAST_UPDATE.toLocaleTimeString()}`;
+
+    document.getElementById('from-amount').addEventListener('input', updateCalculations);
+    document.getElementById('from-currency').addEventListener('change', updateCalculations);
+    document.getElementById('isk-amount').addEventListener('input', updateCalculations);
+    document.getElementById('to-currency').addEventListener('change', updateCalculations);
+
+    updateCalculations();
+  </script>
+</body>
+</html>

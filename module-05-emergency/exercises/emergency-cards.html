@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Emergency Cards</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="../index.html">Module 5</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Emergency Cards</h1>
+    <div class="card">
+      <h2>Keep These Handy</h2>
+      <p>Emergency numbers in Iceland:</p>
+      <div class="card" style="margin: 10px 0;">
+        <strong>112</strong> - Emergency (police, fire, medical)
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>1770</strong> - Health Center
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>1700</strong> - Poison Control
+      </div>
+    </div>
+    <div class="card">
+      <h2>Medical Phrases Quiz</h2>
+      <p>Which phrase means "I have a headache"?</p>
+      <button class="btn quiz-option">Eg er med heilabrest</button>
+      <button class="btn quiz-option">Eg er med bukmerki</button>
+      <button class="btn quiz-option">Eg er med kvennveikindi</button>
+      <p id="quiz-feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="lesson-nav">
+      <a href="../lesson-03.html" class="btn btn-secondary">Previous</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 5</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const feedback = document.getElementById('quiz-feedback');
+        if (this.textContent === 'Eg er med heilabrest') {
+          this.classList.add('correct');
+          feedback.textContent = 'Correct! "I have a headache"';
+          feedback.style.color = 'green';
+        } else {
+          this.classList.add('wrong');
+          feedback.textContent = 'Try again!';
+          feedback.style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Medical Emergencies</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
+    .lesson-objective p { color: white; max-width: 100%; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-item { position: relative; }
+    .phrase-item:hover .phrase-audio-btn { opacity: 1; }
+    .phrase-audio-btn { position: absolute; top: var(--space-md); right: var(--space-md); opacity: 0; transition: opacity 0.2s; }
+    .interactive-moment { background: var(--color-bg); padding: var(--space-lg); border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .quiz-container { margin-top: var(--space-lg); }
+    .quiz-question { font-size: 1.2rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .check-btn { margin-top: var(--space-md); width: 100%; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .phrase-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="index.html">Module 5</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Lesson 1</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>1. Medical Emergencies</h1>
+    </div>
+
+    <div class="lesson-objective">
+      <p><strong>By the end of this lesson, you'll be able to:</strong> Describe symptoms, call for medical help, and understand hospital instructions.</p>
+    </div>
+
+    <div class="card">
+      <h2>Emergency Numbers</h2>
+      <ul>
+        <li><strong>112</strong> — Emergency (police, fire, medical)</li>
+        <li><strong>1770</strong> — Health Center (Sjúkrahús)</li>
+        <li><strong>1700</strong> — Poison Control</li>
+      </ul>
+
+      <div class="callout warning">
+        <strong>Important:</strong> In Iceland, most hospitals require payment upfront. Check if your travel insurance covers medical expenses!
+      </div>
+    </div>
+
+    <h2>Essential Phrases</h2>
+    <div class="phrase-grid">
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hjálp!</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hjálp!">🔊</button>
+          </div>
+          <div class="phrase-translation">Help!</div>
+          <div class="phrase-pronunciation">HYAHLP</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er með...</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er með...">🔊</button>
+          </div>
+          <div class="phrase-translation">I have...</div>
+          <div class="phrase-pronunciation">Ay-gh air may-th</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er með heilabrest</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er með heilabrest">🔊</button>
+          </div>
+          <div class="phrase-translation">I have a headache</div>
+          <div class="phrase-pronunciation">Ay-gh air may-th HAY-la-brest</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er með bukmerki</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er með bukmerki">🔊</button>
+          </div>
+          <div class="phrase-translation">I have stomach pain</div>
+          <div class="phrase-pronunciation">Ay-gh air may-th BUK-mer-kee</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er með kílukoma</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er með kílukoma">🔊</button>
+          </div>
+          <div class="phrase-translation">I have a cold</div>
+          <div class="phrase-pronunciation">Ay-gh air may-th KEE-loo-ko-ma</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er með kvennveikindi</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er með kvennveikindi">🔊</button>
+          </div>
+          <div class="phrase-translation">I have a fever</div>
+          <div class="phrase-pronunciation">Ay-gh air may-th KVENN-way-kin-dee</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvaða heilbrigðisstofnun er nálægt?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvaða heilbrigðis?">🔊</button>
+          </div>
+          <div class="phrase-translation">What medical facility is nearby?</div>
+          <div class="phrase-pronunciation">KVATH-a HAYL-breeg-this-sto-fnun air NAH-lakt?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card interactive-moment">
+      <h3>🚑 Try It: Medical Practice</h3>
+      <p>Practice describing symptoms:</p>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég er með heilabrest</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég er með bukmerki</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég er með kvennveikindi</span>
+      </div>
+    </div>
+
+    <div class="card quiz-container">
+      <h3>Quick Check</h3>
+      <p class="quiz-question">How do you say "I have a fever"?</p>
+      <button class="btn quiz-option">Ég er með kvennveikindi</button>
+      <button class="btn quiz-option">Ég er með kílukoma</button>
+      <button class="btn quiz-option">Ég er með heilabrest</button>
+      <button class="btn quiz-option">Ég er með bukmerki</button>
+      <button class="btn btn-primary check-btn">Check Answer</button>
+      <p id="quiz-feedback" style="margin-top: var(--space-md);"></p>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../dashboard.html" class="btn btn-secondary">← Dashboard</a>
+      <a href="lesson-02.html" class="btn btn-primary">Next Lesson →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const text = this.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.previousElementSibling.textContent;
+        if (text) playAudio(text);
+      });
+    });
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('quiz-feedback');
+      let correctSelected = false, anySelected = false;
+
+      options.forEach(opt => {
+        anySelected = true;
+        if (opt.textContent === 'Ég er með kvennveikindi') {
+          opt.classList.add('correct');
+          correctSelected = true;
+        } else {
+          opt.classList.add('wrong');
+        }
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (!anySelected) {
+        feedback.textContent = 'Please select an answer first!';
+        feedback.style.color = 'var(--color-warning)';
+      } else if (correctSelected) {
+        feedback.textContent = 'Svarið er rétt! (Correct!)';
+        feedback.style.color = 'var(--color-success)';
+      } else {
+        feedback.textContent = 'Not quite. "Ég er með kvennveikindi" means "I have a fever".';
+        feedback.style.color = 'var(--color-error)';
+      }
+    });
+  </script>
+</body>
+</html>

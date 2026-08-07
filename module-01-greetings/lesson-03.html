@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Goodbyes & Farewells</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
+    .lesson-objective p { color: white; max-width: 100%; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-item { position: relative; }
+    .phrase-item:hover .phrase-audio-btn { opacity: 1; }
+    .phrase-audio-btn { position: absolute; top: var(--space-md); right: var(--space-md); opacity: 0; transition: opacity 0.2s; }
+    .interactive-moment { background: var(--color-bg); padding: var(--space-lg); border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .quiz-container { margin-top: var(--space-lg); }
+    .quiz-question { font-size: 1.2rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .check-btn { margin-top: var(--space-md); width: 100%; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .phrase-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="index.html">Module 1</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Lesson 3</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>3. Goodbyes & Farewells</h1>
+    </div>
+
+    <div class="lesson-objective">
+      <p><strong>By the end of this lesson, you'll be able to:</strong> Say goodbye appropriately in different situations, from formal to casual farewells.</p>
+    </div>
+
+    <div class="card">
+      <h2>When to Use What</h2>
+      <p>Like greetings, Icelandic goodbyes vary by formality and context:</p>
+
+      <div class="callout tip">
+        <strong>Pro tip:</strong> Icelanders often shake hands when meeting and parting. A simple nod or wave is also perfectly acceptable.
+      </div>
+    </div>
+
+    <h2>Essential Phrases</h2>
+    <div class="phrase-grid">
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Bless</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Bless">🔊</button>
+          </div>
+          <div class="phrase-translation">Bye (formal)</div>
+          <div class="phrase-pronunciation">BLEHS</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Takk</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Takk">🔊</button>
+          </div>
+          <div class="phrase-translation">Thanks / Bye (casual)</div>
+          <div class="phrase-pronunciation">Tahk</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Bless og bless</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Bless og bless">🔊</button>
+          </div>
+          <div class="phrase-translation">Bye bye (affectionate)</div>
+          <div class="phrase-pronunciation">BLEHS oh BLEHS</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kveðja</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kveðja">🔊</button>
+          </div>
+          <div class="phrase-translation">Goodbye (literary)</div>
+          <div class="phrase-pronunciation">KVEH-thya</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Blessaðu</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Blessaðu">🔊</button>
+          </div>
+          <div class="phrase-translation">Goodbye (to one person)</div>
+          <div class="phrase-pronunciation">BLEHS-thoo</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Blessið</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Blessið">🔊</button>
+          </div>
+          <div class="phrase-translation">Goodbye (to multiple people)</div>
+          <div class="phrase-pronunciation">BLEHS-theeth</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card interactive-moment">
+      <h3>🗣️ Try It: Goodbye Practice</h3>
+      <p>Practice saying goodbye:</p>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Bless</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Takk</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Bless og bless</span>
+      </div>
+    </div>
+
+    <div class="card quiz-container">
+      <h3>Quick Check</h3>
+      <p class="quiz-question">Which goodbye is appropriate for multiple people?</p>
+      <button class="btn quiz-option">Blessaðu</button>
+      <button class="btn quiz-option">Blessið</button>
+      <button class="btn quiz-option">Takk</button>
+      <button class="btn quiz-option">Bless</button>
+      <button class="btn btn-primary check-btn">Check Answer</button>
+      <p id="quiz-feedback" style="margin-top: var(--space-md);"></p>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-lg);">
+      <h3>Common Responses</h3>
+      <p>When someone says goodbye, you can respond with:</p>
+      <div class="phrase-grid">
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Takk fyrir</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Takk fyrir">🔊</button>
+            </div>
+            <div class="phrase-translation">Thank you (response)</div>
+            <div class="phrase-pronunciation">Tahk FVIR</div>
+          </div>
+        </div>
+
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Bless</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Bless">🔊</button>
+            </div>
+            <div class="phrase-translation">Bye (response)</div>
+            <div class="phrase-pronunciation">BLEHS</div>
+          </div>
+        </div>
+
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Sjáumst</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Sjáumst">🔊</button>
+            </div>
+            <div class="phrase-translation">See you (later)</div>
+            <div class="phrase-pronunciation">SYOWMST</div>
+          </div>
+        </div>
+
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Sjáumst síðar</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Sjáumst síðar">🔊</button>
+            </div>
+            <div class="phrase-translation">See you later</div>
+            <div class="phrase-pronunciation">SYOWMST SEE-thar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="lesson-02.html" class="btn btn-secondary">← Previous</a>
+      <a href="../dashboard.html" class="btn btn-primary">Dashboard ↑</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const text = this.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.previousElementSibling.textContent;
+        if (text) playAudio(text);
+      });
+    });
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('quiz-feedback');
+      let correctSelected = false, anySelected = false;
+
+      options.forEach(opt => {
+        anySelected = true;
+        if (opt.textContent === 'Blessið') {
+          opt.classList.add('correct');
+          correctSelected = true;
+        } else {
+          opt.classList.add('wrong');
+        }
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (!anySelected) {
+        feedback.textContent = 'Please select an answer first!';
+        feedback.style.color = 'var(--color-warning)';
+      } else if (correctSelected) {
+        feedback.textContent = 'Svarið er rétt! (Correct!)';
+        feedback.style.color = 'var(--color-success)';
+      } else {
+        feedback.textContent = 'Not quite. Use "Blessið" for multiple people.';
+        feedback.style.color = 'var(--color-error)';
+      }
+    });
+  </script>
+</body>
+</html>

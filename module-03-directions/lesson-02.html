@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Public Transportation</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
+    .lesson-objective p { color: white; max-width: 100%; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-item { position: relative; }
+    .phrase-item:hover .phrase-audio-btn { opacity: 1; }
+    .phrase-audio-btn { position: absolute; top: var(--space-md); right: var(--space-md); opacity: 0; transition: opacity 0.2s; }
+    .interactive-moment { background: var(--color-bg); padding: var(--space-lg); border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .quiz-container { margin-top: var(--space-lg); }
+    .quiz-question { font-size: 1.2rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .check-btn { margin-top: var(--space-md); width: 100%; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .phrase-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="index.html">Module 3</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Lesson 2</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>2. Public Transportation</h1>
+    </div>
+
+    <div class="lesson-objective">
+      <p><strong>By the end of this lesson, you'll be able to:</strong> Use public buses in Reykjavik, understand routes, and buy tickets.</p>
+    </div>
+
+    <div class="card">
+      <h2>Buses in Reykjavik</h2>
+      <p>Iceland's public transportation is reliable but limited. In Reykjavik:</p>
+      <ul>
+        <li>Buses run from 6:30 AM to midnight</li>
+        <li>You need a Strætó card or cash</li>
+        <li>Route 1 goes to the airport and harbor</li>
+      </ul>
+
+      <div class="callout note">
+        <strong>Tip:</strong> Download the Strætó app for real-time bus tracking and route planning.
+      </div>
+    </div>
+
+    <h2>Essential Phrases</h2>
+    <div class="phrase-grid">
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvar er strætóhalta?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvar er strætó">🔊</button>
+          </div>
+          <div class="phrase-translation">Where is the bus stop?</div>
+          <div class="phrase-pronunciation">HVAR air STRAY-toh-HAL-ta</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvenær kemstr strætóin hingað?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvenær kemstr">🔊</button>
+          </div>
+          <div class="phrase-translation">When does the bus arrive here?</div>
+          <div class="phrase-pronunciation">HVEN-air Kem-str STRAY-toh-in HIN-gaht</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvað kostar færið?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvað kostar">🔊</button>
+          </div>
+          <div class="phrase-translation">How much is the fare?</div>
+          <div class="phrase-pronunciation">KVATH KOS-tar FAY-rith</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég viltu kaupa færi</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég viltu kaupa">🔊</button>
+          </div>
+          <div class="phrase-translation">I want to buy a ticket</div>
+          <div class="phrase-pronunciation">Ay-gh VIL-tha KOW-pa FAY-ree</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvaða skipan er þetta?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvaða skipan">🔊</button>
+          </div>
+          <div class="phrase-translation">What route is this?</div>
+          <div class="phrase-pronunciation">KVATH-a SKIP-an air THET-a</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég getur haldið upp á</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég getur haldið">🔊</button>
+          </div>
+          <div class="phrase-translation">I can hold on to</div>
+          <div class="phrase-pronunciation">Ay-gh get-ur HAL-dith UPP ah</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card interactive-moment">
+      <h3>🚌 Try It: Bus Practice</h3>
+      <p>Practice bus-related phrases:</p>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég viltu kaupa færi</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Hvenær kemstr strætóin hingað?</span>
+      </div>
+    </div>
+
+    <div class="card quiz-container">
+      <h3>Quick Check</h3>
+      <p class="quiz-question">How do you ask "What route is this?"</p>
+      <button class="btn quiz-option">Hvaða skipan er þetta?</button>
+      <button class="btn quiz-option">Hvaða bús er þetta?</button>
+      <button class="btn quiz-option">Hvar er strætóin?</button>
+      <button class="btn quiz-option">Hvernig kem ég?</button>
+      <button class="btn btn-primary check-btn">Check Answer</button>
+      <p id="quiz-feedback" style="margin-top: var(--space-md);"></p>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="lesson-01.html" class="btn btn-secondary">← Previous</a>
+      <a href="lesson-03.html" class="btn btn-primary">Next Lesson →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const text = this.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.previousElementSibling.textContent;
+        if (text) playAudio(text);
+      });
+    });
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('quiz-feedback');
+      let correctSelected = false, anySelected = false;
+
+      options.forEach(opt => {
+        anySelected = true;
+        if (opt.textContent === 'Hvaða skipan er þetta?') {
+          opt.classList.add('correct');
+          correctSelected = true;
+        } else {
+          opt.classList.add('wrong');
+        }
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (!anySelected) {
+        feedback.textContent = 'Please select an answer first!';
+        feedback.style.color = 'var(--color-warning)';
+      } else if (correctSelected) {
+        feedback.textContent = 'Svarið er rétt! (Correct!)';
+        feedback.style.color = 'var(--color-success)';
+      } else {
+        feedback.textContent = 'Not quite. "Hvaða skipan er þetta?" means "What route is this?"';
+        feedback.style.color = 'var(--color-error)';
+      }
+    });
+  </script>
+</body>
+</html>

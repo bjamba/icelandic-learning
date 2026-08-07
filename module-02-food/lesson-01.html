@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Ordering Coffee & Drinks</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
+    .lesson-objective p { color: white; max-width: 100%; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-item { position: relative; }
+    .phrase-item:hover .phrase-audio-btn { opacity: 1; }
+    .phrase-audio-btn { position: absolute; top: var(--space-md); right: var(--space-md); opacity: 0; transition: opacity 0.2s; }
+    .interactive-moment { background: var(--color-bg); padding: var(--space-lg); border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .quiz-container { margin-top: var(--space-lg); }
+    .quiz-question { font-size: 1.2rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .check-btn { margin-top: var(--space-md); width: 100%; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .phrase-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="index.html">Module 2</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Lesson 1</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>1. Ordering Coffee & Drinks</h1>
+    </div>
+
+    <div class="lesson-objective">
+      <p><strong>By the end of this lesson, you'll be able to:</strong> Order coffee (all types), tea, water, and other drinks in an Icelandic café or restaurant.</p>
+    </div>
+
+    <div class="card">
+      <h2>The Icelandic Coffee Culture</h2>
+      <p>Icelanders love their coffee! It's common to have multiple cups throughout the day. Here are the essential drinks:</p>
+
+      <div class="callout tip">
+        <strong>Pro tip:</strong> When ordering, it's polite to say "Kaffi, takk" (Coffee, please) or "Ég viltu kaffi" (I want coffee). Icelanders appreciate the extra politeness!
+      </div>
+    </div>
+
+    <h2>Essential Phrases</h2>
+    <div class="phrase-grid">
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kaffi</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kaffi">🔊</button>
+          </div>
+          <div class="phrase-translation">Coffee</div>
+          <div class="phrase-pronunciation">KAH-fee</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kaffi með mjólk</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kaffi með mjólk">🔊</button>
+          </div>
+          <div class="phrase-translation">Coffee with milk</div>
+          <div class="phrase-pronunciation">KAH-fee mehth MYOHKH</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kaffi með rjóma</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kaffi með rjóma">🔊</button>
+          </div>
+          <div class="phrase-translation">Coffee with cream</div>
+          <div class="phrase-pronunciation">KAH-fee mehth YOH-ma</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kaffi sterkur</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kaffi sterkur">🔊</button>
+          </div>
+          <div class="phrase-translation">Strong coffee</div>
+          <div class="phrase-pronunciation">KAH-fee STAIR-kur</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kaffi mjúkur</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kaffi mjúkur">🔊</button>
+          </div>
+          <div class="phrase-translation">Soft/sweet coffee</div>
+          <div class="phrase-pronunciation">KAH-fee MYOO-kur</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Té</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Té">🔊</button>
+          </div>
+          <div class="phrase-translation">Tea</div>
+          <div class="phrase-pronunciation">TAY</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Þéttur kaffi</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Þéttur kaffi">🔊</button>
+          </div>
+          <div class="phrase-translation">Filtered coffee</div>
+          <div class="phrase-pronunciation">THAY-tur KAH-fee</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Vatn</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Vatn">🔊</button>
+          </div>
+          <div class="phrase-translation">Water</div>
+          <div class="phrase-pronunciation">VAHTN</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card interactive-moment">
+      <h3>🗣️ Try It: Ordering Practice</h3>
+      <p>Practice ordering your favorite drink:</p>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég viltu kaffi</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Kaffi með mjólk, takk</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Vatn, takk</span>
+      </div>
+    </div>
+
+    <div class="card quiz-container">
+      <h3>Quick Check</h3>
+      <p class="quiz-question">How do you ask for "coffee with milk"?</p>
+      <button class="btn quiz-option">Kaffi með rjóma</button>
+      <button class="btn quiz-option">Kaffi með mjólk</button>
+      <button class="btn quiz-option">Kaffi sterkur</button>
+      <button class="btn quiz-option">Kaffi mjúkur</button>
+      <button class="btn btn-primary check-btn">Check Answer</button>
+      <p id="quiz-feedback" style="margin-top: var(--space-md);"></p>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../dashboard.html" class="btn btn-secondary">← Dashboard</a>
+      <a href="lesson-02.html" class="btn btn-primary">Next Lesson →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const text = this.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.previousElementSibling.textContent;
+        if (text) playAudio(text);
+      });
+    });
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('quiz-feedback');
+      let correctSelected = false, anySelected = false;
+
+      options.forEach(opt => {
+        anySelected = true;
+        if (opt.textContent === 'Kaffi með mjólk') {
+          opt.classList.add('correct');
+          correctSelected = true;
+        } else {
+          opt.classList.add('wrong');
+        }
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (!anySelected) {
+        feedback.textContent = 'Please select an answer first!';
+        feedback.style.color = 'var(--color-warning)';
+      } else if (correctSelected) {
+        feedback.textContent = 'Svarið er rétt! (Correct!)';
+        feedback.style.color = 'var(--color-success)';
+      } else {
+        feedback.textContent = 'Not quite. "Kaffi með mjólk" means coffee with milk.';
+        feedback.style.color = 'var(--color-error)';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Audio Flashcards</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .flashcard-container { perspective: 1000px; margin: var(--space-lg) 0; }
+    .flashcard { width: 100%; height: 300px; position: relative; cursor: pointer; transition: transform 0.6s; transform-style: preserve-3d; }
+    .flashcard.flipped { transform: rotateY(180deg); }
+    .flashcard-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: var(--radius-lg); padding: var(--space-lg); box-shadow: var(--shadow-medium); }
+    .flashcard-front { background: var(--color-surface); border: 2px solid var(--color-primary); }
+    .flashcard-back { background: var(--color-primary); color: white; transform: rotateY(180deg); }
+    .flashcard-icelandic { font-size: 2.5rem; font-weight: 700; margin-bottom: var(--space-lg); text-align: center; }
+    .flashcard-translation { font-size: 1.5rem; font-style: italic; }
+    .flashcard-pronunciation { font-family: var(--font-mono); color: var(--color-text-light); margin-top: var(--space-sm); }
+    .flashcard-controls { display: flex; gap: var(--space-md); margin-top: var(--space-lg); }
+    .progress-bar { margin: var(--space-md) 0; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .flashcard { height: 250px; } .flashcard-icelandic { font-size: 2rem; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="../index.html">Module 1</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Exercise 1</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>🗣️ Audio Flashcards</h1>
+      <p>Test your recognition of Icelandic phrases</p>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar" style="width: 0%;"></div>
+    </div>
+    <div class="progress-text">Phrase <span id="current-num">1</span> of <span id="total-num">12</span></div>
+
+    <div class="card">
+      <div class="flashcard-container">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-face flashcard-front">
+            <div class="flashcard-icelandic" id="card-front">Kæðar?</div>
+            <p class="flashcard-pronunciation" id="card-pronunciation">KYE-dar</p>
+            <p style="margin-top: var(--space-lg); color: var(--color-text-light);">Tap or click to flip</p>
+          </div>
+          <div class="flashcard-face flashcard-back">
+            <div class="flashcard-translation">Hello / Hi</div>
+            <button class="btn" id="play-btn" style="margin-top: var(--space-lg);">🔊 Play Audio</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button class="btn btn-secondary" id="prev-btn">← Previous</button>
+        <button class="btn btn-primary" id="flip-btn">Flip Card</button>
+        <button class="btn btn-secondary" id="next-btn">Next →</button>
+      </div>
+
+      <p id="feedback" style="margin-top: var(--space-lg); text-align: center; font-weight: 600;"></p>
+    </div>
+
+    <div class="card">
+      <h3>How to use:</h3>
+      <ol>
+        <li>Look at the Icelandic phrase on the front</li>
+        <li>Try to remember what it means</li>
+        <li>Tap or click to flip and see the translation</li>
+        <li>Click "Play Audio" to hear the pronunciation</li>
+        <li>Use next/previous to move through all phrases</li>
+      </ol>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../lesson-03.html" class="btn btn-secondary">← Previous Lesson</a>
+      <a href="../exercises/matching-game.html" class="btn btn-primary">Next Exercise →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../../credits.html">Credits</a>
+        <a href="../../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const phrases = [
+      { icelandic: 'Kæðar?', translation: 'Hello / Hi', pronunciation: 'KYE-dar' },
+      { icelandic: 'Halló', translation: 'Hello', pronunciation: 'hal-LO' },
+      { icelandic: 'Góðan dag', translation: 'Good day', pronunciation: 'GO-than digh' },
+      { icelandic: 'Ég heiti [nafn]', translation: 'My name is [name]', pronunciation: 'Ay-gh HEH-tee' },
+      { icelandic: 'Hvað heitir þú?', translation: 'What is your name?', pronunciation: 'KVATH HEH-teer THOO' },
+      { icelandic: 'Farðu vel', translation: 'Nice to meet you', pronunciation: 'FAR-thoo VEL' },
+      { icelandic: 'Bless', translation: 'Bye (formal)', pronunciation: 'BLEHS' },
+      { icelandic: 'Takk', translation: 'Thanks / Bye (casual)', pronunciation: 'Tahk' },
+      { icelandic: 'Blessaðu', translation: 'Goodbye (to one)', pronunciation: 'BLEHS-thoo' },
+      { icelandic: 'Blessið', translation: 'Goodbye (to many)', pronunciation: 'BLEHS-theeth' },
+      { icelandic: 'Sjáumst', translation: 'See you (later)', pronunciation: 'SYOWMST' },
+      { icelandic: 'Góða nótt', translation: 'Good night', pronunciation: 'GO-tha NUTH-t' }
+    ];
+
+    let currentIndex = 0;
+    const flashcard = document.getElementById('flashcard');
+
+    function updateCard() {
+      const phrase = phrases[currentIndex];
+      document.getElementById('card-front').textContent = phrase.icelandic;
+      document.getElementById('card-pronunciation').textContent = phrase.pronunciation;
+      document.querySelector('.flashcard-translation').textContent = phrase.translation;
+      document.getElementById('current-num').textContent = currentIndex + 1;
+      document.getElementById('total-num').textContent = phrases.length;
+
+      const progressPercent = ((currentIndex + 1) / phrases.length) * 100;
+      document.getElementById('progress-bar').style.width = progressPercent + '%';
+
+      flashcard.classList.remove('flipped');
+      document.getElementById('feedback').textContent = '';
+    }
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    flashcard.addEventListener('click', () => {
+      flashcard.classList.toggle('flipped');
+    });
+
+    document.getElementById('play-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      playAudio(phrases[currentIndex].icelandic);
+    });
+
+    document.getElementById('flip-btn').addEventListener('click', () => {
+      flashcard.classList.toggle('flipped');
+    });
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCard();
+      }
+    });
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+      if (currentIndex < phrases.length - 1) {
+        currentIndex++;
+        updateCard();
+      }
+    });
+
+    updateCard();
+  </script>
+</body>
+</html>

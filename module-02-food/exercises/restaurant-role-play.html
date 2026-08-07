@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Restaurant Role-Play</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="../index.html">Module 2</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Restaurant Role-Play</h1>
+    <div class="card">
+      <h2>Ordering Practice</h2>
+      <p>You enter a restaurant. What do you say first?</p>
+      <button class="btn quiz-option">Godan dag</button>
+      <button class="btn quiz-option">Bord fyrir tveir, takk</button>
+      <button class="btn quiz-option">Takk fyrir ferdid</button>
+      <p id="quiz-feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="card">
+      <h2>At the End</h2>
+      <p>What do you say when you want the bill?</p>
+      <button class="btn quiz-option">Faerid ykkur ad reikningnum</button>
+      <button class="btn quiz-option">Eg er fullur kominn</button>
+      <button class="btn quiz-option">Kaffi, takk</button>
+      <p id="quiz-feedback2" style="margin-top: 10px;"></p>
+    </div>
+    <div class="lesson-nav">
+      <a href="menu-reader.html" class="btn btn-secondary">Previous</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 2</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const feedback = this.parentElement.children[1].id === 'quiz-feedback' ? document.getElementById('quiz-feedback') : document.getElementById('quiz-feedback2');
+        if (this.textContent === 'Godan dag' && feedback.id === 'quiz-feedback') {
+          this.classList.add('correct');
+          feedback.textContent = 'Correct! Say "Good day" when entering.';
+          feedback.style.color = 'green';
+        } else if (this.textContent === 'Faerid ykkur ad reikningnum' && feedback.id === 'quiz-feedback2') {
+          this.classList.add('correct');
+          feedback.textContent = 'Correct! "The bill please"';
+          feedback.style.color = 'green';
+        } else {
+          this.classList.add('wrong');
+          feedback.textContent = 'Try again!';
+          feedback.style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

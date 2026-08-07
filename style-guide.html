@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Guide — Icelandic Learner</title>
+  <link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Style Guide</span>
+  </nav>
+
+  <div class="container">
+    <h1>Style Guide Bible</h1>
+    <p>This is the living design system for the Icelandic Language Learning curriculum. All visual decisions live in <code>assets/theme.css</code> — edit there and everything updates.</p>
+
+    <div class="card">
+      <h2>Color Palette</h2>
+      <div class="color-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md); margin-top: var(--space-md);">
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-primary);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Primary: #2a7da6</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-secondary);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Secondary: #4caf50</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-accent);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Accent: #ffb74d</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-bg); border: 1px solid var(--color-border);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Background: #f4f7f9</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-surface); border: 1px solid var(--color-border);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Surface: #ffffff</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto var(--space-sm); background: var(--color-text);"></div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem;">Text: #2c3e50</div>
+        </div>
+      </div>
+      <p class="callout note" style="margin-top: var(--space-lg);">
+        <strong>Nordic Inspiration:</strong> Colors draw from Icelandic landscapes — the sky blue, northern nature green, and the golden hue of the midnight sun.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Typography</h2>
+      <h1>Heading 1 — H1</h1>
+      <h2>Heading 2 — H2</h2>
+      <h3>Heading 3 — H3</h3>
+      <p>This is paragraph text. The measure is capped at 68 characters for optimal reading comfort. Long lines fatigue the eye, especially on mobile devices.</p>
+      <p style="font-family: var(--font-mono);">This is monospace text — good for code, phonetics, and technical terms.</p>
+      <p><a href="#">This is a link</a> — blue with underline on hover.</p>
+    </div>
+
+    <div class="card">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <div style="margin: var(--space-md) 0;">
+        <button class="btn btn-primary">Primary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
+      </div>
+
+      <h3>Cards</h3>
+      <div class="card" style="margin-top: var(--space-md);">
+        <div class="card-header">
+          <span class="card-title">Card Title</span>
+          <span>12:34</span>
+        </div>
+        <p>Card content goes here. Cards have subtle shadows and rounded corners.</p>
+      </div>
+
+      <h3>Callouts</h3>
+      <div style="margin-top: var(--space-md);">
+        <div class="callout note">
+          <strong>Note:</strong> This is a note callout. Use for additional context.
+        </div>
+        <div class="callout tip" style="margin-top: var(--space-sm);">
+          <strong>Tip:</strong> This is a tip callout. Use for helpful advice.
+        </div>
+        <div class="callout warning" style="margin-top: var(--space-sm);">
+          <strong>Warning:</strong> This is a warning callout. Use for important cautions.
+        </div>
+      </div>
+
+      <h3>Audio Player</h3>
+      <div class="audio-player" style="margin-top: var(--space-md);">
+        <button class="audio-btn" aria-label="Play audio">🔊</button>
+        <span class="audio-text">Kæðar?</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Accessibility</h2>
+      <p>The design system follows these accessibility principles:</p>
+      <ul>
+        <li><strong>Contrast:</strong> Body text meets WCAG AA (4.5:1 minimum)</li>
+        <li><strong>Touch targets:</strong> Minimum 44px for all interactive elements</li>
+        <li><strong>Keyboard nav:</strong> All interactive elements focusable</li>
+        <li><strong>Focus styles:</strong> Visible focus indicators on all focusable elements</li>
+        <li><strong>Reduced motion:</strong> Animations respect <code>prefers-reduced-motion</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Responsive Breakpoints</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: var(--space-md);">
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <th style="text-align: left; padding: var(--space-sm);">Device</th>
+          <th style="text-align: left; padding: var(--space-sm);">Width</th>
+          <th style="text-align: left; padding: var(--space-sm);">Layout</th>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-sm);">Phone</td>
+          <td style="padding: var(--space-sm);">≤480px</td>
+          <td style="padding: var(--space-sm);">Single column, touch-friendly</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--color-border);">
+          <td style="padding: var(--space-sm);">Tablet</td>
+          <td style="padding: var(--space-sm);">481-768px</td>
+          <td style="padding: var(--space-sm);">Optimized two-column</td>
+        </tr>
+        <tr>
+          <td style="padding: var(--space-sm);">Desktop</td>
+          <td style="padding: var(--space-sm);">769px+</td>
+          <td style="padding: var(--space-sm);">Full width, max measure</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="credits.html">Credits</a>
+        <a href="style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

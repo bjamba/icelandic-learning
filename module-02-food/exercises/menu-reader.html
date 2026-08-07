@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Menu Reader</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="../index.html">Module 2</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Menu Reader</h1>
+    <div class="card">
+      <h2>Match the Icelandic Dish</h2>
+      <p>Match each Icelandic dish to its description:</p>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Kjotsupa</strong> - Meat soup
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Hardfiskur</strong> - Dried fish
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Plokkfiskur</strong> - Fish stew
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Sviad</strong> - Singed sheep head
+      </div>
+    </div>
+    <div class="card">
+      <h2>Quiz</h2>
+      <p>What is "Hardfiskur"?</p>
+      <button class="btn quiz-option">Dried fish</button>
+      <button class="btn quiz-option">Fresh fish</button>
+      <button class="btn quiz-option">Fish soup</button>
+      <p id="quiz-feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="lesson-nav">
+      <a href="../lesson-03.html" class="btn btn-secondary">Previous</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 2</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.textContent === 'Dried fish') {
+          this.classList.add('correct');
+          document.getElementById('quiz-feedback').textContent = 'Correct!';
+          document.getElementById('quiz-feedback').style.color = 'green';
+        } else {
+          this.classList.add('wrong');
+          document.getElementById('quiz-feedback').textContent = 'Try again!';
+          document.getElementById('quiz-feedback').style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

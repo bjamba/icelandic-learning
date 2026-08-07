@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Shopping Simulator</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="../index.html">Module 4</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Shopping Simulator</h1>
+    <div class="card">
+      <h2>Scenario 1: Buying a souvenir</h2>
+      <p>You want to buy an Icelandic sweater (Lopapeyja). Practice the conversation:</p>
+      <div class="quiz-option">
+        <strong>Question:</strong> What do you say first?
+        <div style="margin-top: 5px;">
+          <button class="btn quiz-option-btn">Hva kostar thetta?</button>
+          <button class="btn quiz-option-btn">Gudan dag</button>
+          <button class="btn quiz-option-btn">Takk</button>
+        </div>
+      </div>
+      <p id="feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="card">
+      <h2>Scenario 2: Asking for size</h2>
+      <p>You want to know the largest size available:</p>
+      <div class="quiz-option">
+        <button class="btn quiz-option-btn">Hva er staerst staerdin?</button>
+        <button class="btn quiz-option-btn">Hvar er staerd?</button>
+        <button class="btn quiz-option-btn">Hvaad er thetta?</button>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <a href="../lesson-03.html" class="btn btn-secondary">Previous</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 4</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const feedback = document.getElementById('feedback');
+        if (this.textContent === 'Hva kostar thetta?') {
+          feedback.textContent = 'Correct! You ask "How much is this?"';
+          feedback.style.color = 'green';
+        } else if (this.textContent === 'Hva er staerst staerdin?') {
+          feedback.textContent = 'Correct! You ask "What is the largest size?"';
+          feedback.style.color = 'green';
+        } else {
+          feedback.textContent = 'Try again!';
+          feedback.style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

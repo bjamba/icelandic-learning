@@ -1,0 +1,513 @@
+/* ========================================
+   Icelandic Learner — Style Guide Bible
+   Design system for teach-me Icelandic
+   ======================================== */
+
+/* --- Design Tokens --- */
+
+:root {
+  /* Color palette — Nordic-inspired */
+  --color-bg: #f4f7f9;
+  --color-surface: #ffffff;
+  --color-primary: #2a7da6;     /* Icelandic sky blue */
+  --color-primary-dark: #1a5a7d;
+  --color-secondary: #4caf50;   /* Northern nature green */
+  --color-accent: #ffb74d;      /* Midnight sun gold */
+  --color-text: #2c3e50;
+  --color-text-light: #6c7a8d;
+  --color-border: #e1e8ed;
+
+  /* Semantic colors */
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-error: #e53935;
+  --color-info: #2196f3;
+
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Sizing */
+  --measure-prose: 68ch;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+
+  /* Spacing scale */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* Breakpoints */
+  --breakpoint-phone: 480px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+}
+
+/* --- Base Reset & Typography --- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--space-md) 0;
+  color: var(--color-text);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin: 0 0 var(--space-md) 0;
+  max-width: var(--measure-prose);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Layout Components --- */
+
+.container {
+  max-width: var(--measure-prose);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.site-header {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.site-header h1 {
+  color: white;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: 0.9rem;
+}
+
+.site-nav a {
+  color: rgba(255,255,255,0.9);
+}
+
+.site-nav .nav-sep {
+  color: rgba(255,255,255,0.5);
+}
+
+.site-nav .nav-current {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* --- Cards --- */
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border: 1px solid var(--color-border);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* --- Buttons --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg);
+}
+
+.btn-icon {
+  padding: var(--space-xs);
+  border-radius: 50%;
+}
+
+/* --- Progress Bar --- */
+
+.progress-container {
+  background: var(--color-border);
+  border-radius: var(--radius-sm);
+  height: 8px;
+  overflow: hidden;
+  margin: var(--space-sm) 0;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  height: 100%;
+  border-radius: var(--radius-sm);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+}
+
+/* --- Callouts --- */
+
+.callout {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin: var(--space-md) 0;
+  border-left: 4px solid;
+  background: rgba(255,255,255,0.7);
+}
+
+.callout.note {
+  border-color: var(--color-primary);
+  background: rgba(42, 125, 166, 0.05);
+}
+
+.callout.tip {
+  border-color: var(--color-secondary);
+  background: rgba(76, 175, 80, 0.05);
+}
+
+.callout.warning {
+  border-color: var(--color-warning);
+  background: rgba(255, 152, 0, 0.05);
+}
+
+/* --- Audio Player --- */
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  margin: var(--space-md) 0;
+}
+
+.audio-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.audio-btn:hover {
+  background: var(--color-primary-dark);
+  transform: scale(1.05);
+}
+
+.audio-btn.playing {
+  background: var(--color-secondary);
+}
+
+.audio-text {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* --- Currency Converter --- */
+
+.currency-converter {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
+}
+
+.currency-input {
+  width: 100%;
+  padding: var(--space-sm);
+  font-size: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.currency-select {
+  padding: var(--space-sm);
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.currency-result {
+  text-align: center;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.currency-rate {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+}
+
+/* --- Phrase Card --- */
+
+.phrase-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.phrase-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.phrase-icelandic {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.phrase-translation {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: var(--space-sm);
+}
+
+.phrase-pronunciation {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  background: var(--color-bg);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+}
+
+/* --- Quiz Component --- */
+
+.quiz-option {
+  display: block;
+  width: 100%;
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.quiz-option:hover {
+  border-color: var(--color-primary);
+  background: rgba(42, 125, 166, 0.03);
+}
+
+.quiz-option.selected {
+  border-color: var(--color-primary);
+  background: rgba(42, 125, 166, 0.1);
+}
+
+.quiz-option.correct {
+  border-color: var(--color-success);
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.quiz-option.wrong {
+  border-color: var(--color-error);
+  background: rgba(229, 57, 53, 0.1);
+}
+
+/* --- Mobile Navigation --- */
+
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  background: var(--color-surface);
+  padding: var(--space-lg) var(--space-md);
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.85rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.footer-links a {
+  color: var(--color-text-light);
+  margin-left: var(--space-sm);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 768px) {
+  .currency-converter {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    margin-top: var(--space-sm);
+  }
+
+  .site-nav.active {
+    display: flex;
+  }
+
+  h1 { font-size: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 var(--space-sm); }
+  .card { padding: var(--space-md); }
+  .site-header { padding: var(--space-xs) var(--space-sm); }
+}
+
+/* --- Animations --- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* --- Print Styles --- */
+
+@media print {
+  .site-header, .site-footer, .btn, .audio-btn, .quiz-option {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}

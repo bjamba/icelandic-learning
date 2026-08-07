@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: At the Restaurant</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .lesson-objective { background: var(--color-primary); color: white; padding: var(--space-md); border-radius: var(--radius-sm); margin: var(--space-md) 0; }
+    .lesson-objective p { color: white; max-width: 100%; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-item { position: relative; }
+    .phrase-item:hover .phrase-audio-btn { opacity: 1; }
+    .phrase-audio-btn { position: absolute; top: var(--space-md); right: var(--space-md); opacity: 0; transition: opacity 0.2s; }
+    .interactive-moment { background: var(--color-bg); padding: var(--space-lg); border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .quiz-container { margin-top: var(--space-lg); }
+    .quiz-question { font-size: 1.2rem; font-weight: 600; margin-bottom: var(--space-md); }
+    .check-btn { margin-top: var(--space-md); width: 100%; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .phrase-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="index.html">Module 2</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Lesson 2</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>2. At the Restaurant</h1>
+    </div>
+
+    <div class="lesson-objective">
+      <p><strong>By the end of this lesson, you'll be able to:</strong> Navigate a restaurant menu, order food, ask for recommendations, and handle the bill.</p>
+    </div>
+
+    <div class="card">
+      <h2>Restaurant Etiquette</h2>
+      <p>In Iceland, restaurants are generally casual. Here's what you need to know:</p>
+
+      <div class="callout note">
+        <strong>Service charge:</strong> Service is usually included in the price, so tipping is not expected (though appreciated for exceptional service).
+      </div>
+    </div>
+
+    <h2>Essential Phrases</h2>
+    <div class="phrase-grid">
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Borð fyrir [tala], takk</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Borð fyrir">🔊</button>
+          </div>
+          <div class="phrase-translation">Table for [number], please</div>
+          <div class="phrase-pronunciation">BORHT HVIR THA-la tahk</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kveðja</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kveðja">🔊</button>
+          </div>
+          <div class="phrase-translation">Excuse me</div>
+          <div class="phrase-pronunciation">KVEH-thya</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég vildi kynna mína bestu</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég vildi kynna">🔊</button>
+          </div>
+          <div class="phrase-translation">I would like to order</div>
+          <div class="phrase-pronunciation">Ay-gh VIL-tha KYN-na MEE-nuh</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Áður en ég get sótt</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Áður en ég get">🔊</button>
+          </div>
+          <div class="phrase-translation">Before I order</div>
+          <div class="phrase-pronunciation">OW-thur en Ay-gh get</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Hvað er besta?</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Hvað er besta?">🔊</button>
+          </div>
+          <div class="phrase-translation">What is best?</div>
+          <div class="phrase-pronunciation">KVATH air BAY-sta</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég er allur kominn</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég er allur kominn">🔊</button>
+          </div>
+          <div class="phrase-translation">I'm ready to order</div>
+          <div class="phrase-pronunciation">Ay-gh air AHL-lur KOM-in</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Kveðja, færið ykkur að reikningnum</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Kveðja, færið">🔊</button>
+          </div>
+          <div class="phrase-translation">Excuse me, the bill please</div>
+          <div class="phrase-pronunciation">KVEH-thya, FAY-rith IK-kur a REYK-in-ing-num</div>
+        </div>
+      </div>
+
+      <div class="phrase-item">
+        <div class="card phrase-card">
+          <div class="phrase-icelandic">
+            <span>Ég vildi kynna mína bestu</span>
+            <button class="audio-btn phrase-audio-btn" aria-label="Play Ég vildi kynna">🔊</button>
+          </div>
+          <div class="phrase-translation">I would like to order</div>
+          <div class="phrase-pronunciation">Ay-gh VIL-tha KYN-na MEE-nuh</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card interactive-moment">
+      <h3>🗣️ Try It: Restaurant Role-Play</h3>
+      <p>Practice the waiter-customer interaction:</p>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Borð fyrir tveir, takk</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Kveðja, færið ykkur að reikningnum</span>
+      </div>
+      <div class="audio-player">
+        <button class="audio-btn" aria-label="Play phrase">🔊</button>
+        <span class="audio-text">Ég er allur kominn</span>
+      </div>
+    </div>
+
+    <div class="card quiz-container">
+      <h3>Quick Check</h3>
+      <p class="quiz-question">How do you ask for the bill?</p>
+      <button class="btn quiz-option">Færið ykkur að reikningnum</button>
+      <button class="btn quiz-option">Gefðu mér matinn</button>
+      <button class="btn quiz-option">Hvað kostar þetta?</button>
+      <button class="btn quiz-option">Ég er allur kominn</button>
+      <button class="btn btn-primary check-btn">Check Answer</button>
+      <p id="quiz-feedback" style="margin-top: var(--space-md);"></p>
+    </div>
+
+    <div class="card" style="margin-top: var(--space-lg);">
+      <h3>Common Menu Items</h3>
+      <p>You'll often see these on Icelandic menus:</p>
+      <div class="phrase-grid">
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Kjötsúpa</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Kjötsúpa">🔊</button>
+            </div>
+            <div class="phrase-translation">Meat soup</div>
+            <div class="phrase-pronunciation">KYOHTS-oo-pa</div>
+          </div>
+        </div>
+
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Hardfiskur</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Hardfiskur">🔊</button>
+            </div>
+            <div class="phrase-translation">Dried fish</div>
+            <div class="phrase-pronunciation">HARHT-fees-kur</div>
+          </div>
+        </div>
+
+        <div class="phrase-item">
+          <div class="card phrase-card">
+            <div class="phrase-icelandic">
+              <span>Plokkfiskur</span>
+              <button class="audio-btn phrase-audio-btn" aria-label="Play Plokkfiskur">🔊</button>
+            </div>
+            <div class="phrase-translation">Fish stew</div>
+            <div class="phrase-pronunciation">PLAHK-fees-kur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="lesson-01.html" class="btn btn-secondary">← Previous</a>
+      <a href="lesson-03.html" class="btn btn-primary">Next Lesson →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const text = this.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.parentElement.querySelector('.audio-text')?.textContent ||
+                     this.parentElement.previousElementSibling.textContent;
+        if (text) playAudio(text);
+      });
+    });
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.querySelector('.check-btn').addEventListener('click', function() {
+      const options = document.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById('quiz-feedback');
+      let correctSelected = false, anySelected = false;
+
+      options.forEach(opt => {
+        anySelected = true;
+        if (opt.textContent === 'Færið ykkur að reikningnum') {
+          opt.classList.add('correct');
+          correctSelected = true;
+        } else {
+          opt.classList.add('wrong');
+        }
+        opt.style.pointerEvents = 'none';
+      });
+
+      if (!anySelected) {
+        feedback.textContent = 'Please select an answer first!';
+        feedback.style.color = 'var(--color-warning)';
+      } else if (correctSelected) {
+        feedback.textContent = 'Svarið er rétt! (Correct!)';
+        feedback.style.color = 'var(--color-success)';
+      } else {
+        feedback.textContent = 'Not quite. Use "Færið ykkur að reikningnum" for the bill.';
+        feedback.style.color = 'var(--color-error)';
+      }
+    });
+  </script>
+</body>
+</html>

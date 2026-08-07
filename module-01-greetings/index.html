@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module 1: Greetings & Introductions</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .module-header { text-align: center; padding: var(--space-xl) 0; }
+    .module-intro { max-width: var(--measure-prose); margin: var(--space-lg) auto; text-align: center; }
+    .module-intro p { font-size: 1.25rem; }
+    .lesson-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--space-md); margin-top: var(--space-xl); }
+    .lesson-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-soft); text-align: center; transition: transform 0.2s; }
+    .lesson-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
+    .lesson-number { font-size: 3rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-sm); }
+    .lesson-title { font-size: 1.25rem; font-weight: 600; margin-bottom: var(--space-sm); }
+    .lesson-count { font-size: 0.9rem; color: var(--color-text-light); }
+    .exercise-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--space-md); margin-top: var(--space-xl); }
+    .exercise-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-soft); text-align: center; transition: transform 0.2s; }
+    .exercise-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
+    .exercise-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+    .progress-container { margin: var(--space-lg) 0; }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .lesson-grid, .exercise-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Module 1</span>
+  </nav>
+
+  <div class="container">
+    <div class="module-header">
+      <h1>Module 1: Greetings & Introductions</h1>
+    </div>
+
+    <div class="module-intro">
+      <p>In this module, you'll learn the essential phrases for greeting people, introducing yourself, and saying goodbye in Icelandic.</p>
+    </div>
+
+    <div class="progress-container">
+      <h3>Your Progress</h3>
+      <div class="progress-container">
+        <div class="progress-bar" style="width: 33%;"></div>
+      </div>
+      <div class="progress-text">1 of 3 lessons completed</div>
+    </div>
+
+    <h2>Lessons</h2>
+    <div class="lesson-grid">
+      <a href="lesson-01.html" class="lesson-card">
+        <div class="lesson-number">1</div>
+        <div class="lesson-title">Hello & Basic Greetings</div>
+        <div class="lesson-count">6 phrases to know</div>
+      </a>
+      <a href="lesson-02.html" class="lesson-card">
+        <div class="lesson-number">2</div>
+        <div class="lesson-title">Introductions & Names</div>
+        <div class="lesson-count">6 phrases to know</div>
+      </a>
+      <a href="lesson-03.html" class="lesson-card">
+        <div class="lesson-number">3</div>
+        <div class="lesson-title">Goodbyes & Farewells</div>
+        <div class="lesson-count">6 phrases to know</div>
+      </a>
+    </div>
+
+    <h2>Exercises</h2>
+    <div class="exercise-grid">
+      <a href="exercises/audio-flashcards.html" class="exercise-card">
+        <div class="exercise-icon">🔊</div>
+        <div class="lesson-title">Audio Flashcards</div>
+        <div class="lesson-count">Practice listening and matching</div>
+      </a>
+      <a href="exercises/matching-game.html" class="exercise-card">
+        <div class="exercise-icon">🎮</div>
+        <div class="lesson-title">Matching Game</div>
+        <div class="lesson-count">Match Icelandic to English</div>
+      </a>
+    </div>
+
+    <div class="card">
+      <h2>Module Objective</h2>
+      <p>By the end of this module, you'll be able to:</p>
+      <ul>
+        <li>Greet people formally and informally</li>
+        <li>Introduce yourself and ask for names</li>
+        <li>Say goodbye appropriately in any situation</li>
+        <li>Understand common Icelandic greetings</li>
+      </ul>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="../dashboard.html" class="btn btn-secondary">← Dashboard</a>
+      <a href="lesson-01.html" class="btn btn-primary">Start Module →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

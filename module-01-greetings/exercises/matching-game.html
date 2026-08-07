@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Matching Game</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+  <style>
+    .lesson-header { text-align: center; padding: var(--space-lg) 0; }
+    .game-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-lg) 0; }
+    .card { background: var(--color-surface); border: 2px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-md); cursor: pointer; transition: all 0.2s; text-align: center; }
+    .card:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+    .card.selected { border-color: var(--color-primary); background: rgba(42, 125, 166, 0.1); }
+    .card.matched { border-color: var(--color-success); background: rgba(76, 175, 80, 0.1); cursor: default; opacity: 0.5; }
+    .card-content { font-size: 1.1rem; font-weight: 500; }
+    .game-controls { text-align: center; margin: var(--space-lg) 0; }
+    .score-board { display: flex; justify-content: center; gap: var(--space-lg); margin: var(--space-md) 0; }
+    .score-item { text-align: center; }
+    .score-value { font-size: 2rem; font-weight: 700; color: var(--color-primary); }
+    .score-label { font-size: 0.85rem; color: var(--color-text-light); }
+    .lesson-nav { display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+    .lesson-nav .btn { flex: 1; margin: 0 var(--space-sm); }
+    @media (max-width: 768px) { .game-board { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <a href="../index.html">Module 1</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Exercise 2</span>
+  </nav>
+
+  <div class="container">
+    <div class="lesson-header">
+      <h1>🎮 Matching Game</h1>
+      <p>Match Icelandic phrases to their English translations</p>
+    </div>
+
+    <div class="score-board">
+      <div class="score-item">
+        <div class="score-value" id="score">0</div>
+        <div class="score-label">Matches</div>
+      </div>
+      <div class="score-item">
+        <div class="score-value" id="moves">0</div>
+        <div class="score-label">Moves</div>
+      </div>
+      <div class="score-item">
+        <div class="score-value" id="timer">00:00</div>
+        <div class="score-label">Time</div>
+      </div>
+    </div>
+
+    <div class="game-controls">
+      <button class="btn btn-primary" id="restart-btn">Restart Game</button>
+      <p id="game-status" style="margin-top: var(--space-sm); font-weight: 600;"></p>
+    </div>
+
+    <div class="card">
+      <div class="game-board" id="game-board">
+        <!-- Cards will be generated here -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How to play:</h3>
+      <ol>
+        <li>Click a card to reveal the text</li>
+        <li>Find the matching phrase (Icelandic ↔ English)</li>
+        <li>Click to match them</li>
+        <li>Clear the board to win!</li>
+      </ol>
+    </div>
+
+    <div class="lesson-nav">
+      <a href="audio-flashcards.html" class="btn btn-secondary">← Previous Exercise</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 1</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../../credits.html">Credits</a>
+        <a href="../../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const pairs = [
+      { icelandic: 'Kæðar?', english: 'Hello / Hi' },
+      { icelandic: 'Góðan dag', english: 'Good day' },
+      { icelandic: 'Hvað heitir þú?', english: 'What is your name?' },
+      { icelandic: 'Farðu vel', english: 'Nice to meet you' },
+      { icelandic: 'Bless', english: 'Bye (formal)' },
+      { icelandic: 'Takk', english: 'Thanks / Bye' }
+    ];
+
+    let cards = [];
+    let selectedCard = null;
+    let matches = 0;
+    let moves = 0;
+    let timer = 0;
+    let timerInterval = null;
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function startTimer() {
+      if (timerInterval) clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        timer++;
+        const mins = Math.floor(timer / 60).toString().padStart(2, '0');
+        const secs = (timer % 60).toString().padStart(2, '0');
+        document.getElementById('timer').textContent = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function createCards() {
+      const gameBoard = document.getElementById('game-board');
+      gameBoard.innerHTML = '';
+      cards = [];
+
+      pairs.forEach((pair, index) => {
+        cards.push({ id: index, text: pair.icelandic, type: 'icelandic' });
+        cards.push({ id: index, text: pair.english, type: 'english' });
+      });
+
+      shuffle(cards);
+
+      cards.forEach((card, i) => {
+        const cardEl = document.createElement('div');
+        cardEl.className = 'card';
+        cardEl.dataset.index = i;
+        cardEl.innerHTML = `<div class="card-content">${card.text}</div>`;
+        cardEl.addEventListener('click', () => handleCardClick(i, cardEl));
+        gameBoard.appendChild(cardEl);
+      });
+    }
+
+    function handleCardClick(index, cardEl) {
+      if (cardEl.classList.contains('matched') || cardEl.classList.contains('selected')) return;
+
+      if (!selectedCard) {
+        selectedCard = { index, cardEl };
+        cardEl.classList.add('selected');
+        return;
+      }
+
+      moves++;
+      document.getElementById('moves').textContent = moves;
+
+      const otherCard = { index: selectedCard.index, cardEl: selectedCard.cardEl };
+      selectedCard.cardEl.classList.remove('selected');
+      selectedCard = null;
+
+      if (cards[index].id === otherCard.index) {
+        cardEl.classList.add('matched');
+        otherCard.cardEl.classList.add('matched');
+        matches++;
+        document.getElementById('score').textContent = matches;
+
+        if (matches === pairs.length) {
+          clearInterval(timerInterval);
+          document.getElementById('game-status').textContent = '🎉 All matched! Kæðar!';
+          confettiEffect();
+        }
+      } else {
+        setTimeout(() => {
+          cardEl.classList.remove('selected');
+          otherCard.cardEl.classList.remove('selected');
+        }, 800);
+      }
+    }
+
+    function confettiEffect() {
+      const colors = ['#2a7da6', '#4caf50', '#ffb74d', '#e53935'];
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '-10px';
+        confetti.style.zIndex = '9999';
+        confetti.style.transition = 'top 1s ease-out, transform 1s linear';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.style.top = '110vh';
+          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+        }, 100);
+      }
+    }
+
+    document.getElementById('restart-btn').addEventListener('click', () => {
+      matches = 0;
+      moves = 0;
+      timer = 0;
+      document.getElementById('score').textContent = 0;
+      document.getElementById('moves').textContent = 0;
+      document.getElementById('timer').textContent = '00:00';
+      document.getElementById('game-status').textContent = '';
+      createCards();
+      startTimer();
+    });
+
+    createCards();
+    startTimer();
+  </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phrasebook — Icelandic Learning</title>
+  <link rel="stylesheet" href="../assets/theme.css">
+  <style>
+    .tool-header { text-align: center; padding: var(--space-xl) 0; }
+    .search-box { position: relative; margin: var(--space-lg) 0; }
+    .search-input { width: 100%; padding: var(--space-md) var(--space-md) var(--space-md) 44px; font-size: 1.2rem; border: 2px solid var(--color-border); border-radius: var(--radius-md); }
+    .search-icon { position: absolute; left: var(--space-sm); top: 50%; transform: translateY(-50%); color: var(--color-text-light); font-size: 1.5rem; }
+    .category-filters { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin: var(--space-lg) 0; }
+    .category-btn { padding: var(--space-xs) var(--space-md); border: 2px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; }
+    .category-btn:hover { border-color: var(--color-primary); }
+    .category-btn.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+    .phrase-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-lg); transition: transform 0.2s; }
+    .phrase-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
+    .phrase-icelandic { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xs); }
+    .phrase-translation { font-size: 1.1rem; color: var(--color-text-light); font-style: italic; }
+    .phrase-pronunciation { font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-text-light); margin-top: var(--space-sm); display: inline-block; }
+    .empty-state { text-align: center; padding: var(--space-xl); color: var(--color-text-light); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../dashboard.html">🏠 Dashboard</a>
+    <span class="nav-sep">›</span>
+    <span class="nav-current">Phrasebook</span>
+  </nav>
+
+  <div class="container">
+    <div class="tool-header">
+      <h1>🗣️ Phrasebook</h1>
+      <p>Search and play audio for Icelandic phrases</p>
+    </div>
+
+    <div class="card">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" class="search-input" placeholder="Search phrases..." autocomplete="off">
+      </div>
+
+      <div class="category-filters">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="greetings">Greetings</button>
+        <button class="category-btn" data-category="food">Food</button>
+        <button class="category-btn" data-category="directions">Directions</button>
+        <button class="category-btn" data-category="shopping">Shopping</button>
+        <button class="category-btn" data-category="emergency">Emergency</button>
+      </div>
+
+      <div id="phrase-grid" class="phrase-grid">
+        <!-- Phrases will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+      <span class="footer-links">
+        <a href="../credits.html">Credits</a>
+        <a href="../style-guide.html">Style Guide</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const phrases = [
+      { icelandic: 'Kæðar?', translation: 'Hello / Hi', category: 'greetings', pronunciation: 'KYE-dar' },
+      { icelandic: 'Halló', translation: 'Hello', category: 'greetings', pronunciation: 'hal-LO' },
+      { icelandic: 'Góðan dag', translation: 'Good day', category: 'greetings', pronunciation: 'GO-than digh' },
+      { icelandic: 'Góðan daginn', translation: 'Good day (formal)', category: 'greetings', pronunciation: 'GO-than DIGH-in' },
+      { icelandic: 'Góðan kvöld', translation: 'Good evening', category: 'greetings', pronunciation: 'GO-than KVUTH-ul' },
+      { icelandic: 'Góða nótt', translation: 'Good night', category: 'greetings', pronunciation: 'GO-tha NUTH-t' },
+      { icelandic: 'Ég heiti [nafn]', translation: 'My name is [name]', category: 'greetings', pronunciation: 'Ay-gh HEH-tee' },
+      { icelandic: 'Hvað heitir þú?', translation: 'What is your name?', category: 'greetings', pronunciation: 'KVATH HEH-teer THOO' },
+      { icelandic: 'Farðu vel', translation: 'Nice to meet you', category: 'greetings', pronunciation: 'FAR-thoo VEL' },
+      { icelandic: 'Bless', translation: 'Bye (formal)', category: 'greetings', pronunciation: 'BLEHS' },
+      { icelandic: 'Takk', translation: 'Thanks / Bye', category: 'greetings', pronunciation: 'Tahk' },
+      { icelandic: 'Blessaðu', translation: 'Goodbye (to one)', category: 'greetings', pronunciation: 'BLEHS-thoo' },
+      { icelandic: 'Blessið', translation: 'Goodbye (to many)', category: 'greetings', pronunciation: 'BLEHS-theeth' },
+      { icelandic: 'Sjáumst', translation: 'See you later', category: 'greetings', pronunciation: 'SYOWMST' },
+      { icelandic: 'Kaffi', translation: 'Coffee', category: 'food', pronunciation: 'KAH-fee' },
+      { icelandic: 'Kaffi með mjólk', translation: 'Coffee with milk', category: 'food', pronunciation: 'KAH-fee mehth MYOHKH' },
+      { icelandic: 'Kaffi með rjóma', translation: 'Coffee with cream', category: 'food', pronunciation: 'KAH-fee mehth YOH-ma' },
+      { icelandic: 'Té', translation: 'Tea', category: 'food', pronunciation: 'TAY' },
+      { icelandic: 'Vatn', translation: 'Water', category: 'food', pronunciation: 'VAHTN' },
+      { icelandic: 'Ég vildi kynna mína bestu', translation: 'I would like to order', category: 'food', pronunciation: 'Ay-gh VIL-tha KYN-na MEE-nuh' },
+      { icelandic: 'Hvað kostar þetta?', translation: 'How much does this cost?', category: 'shopping', pronunciation: 'KVATH KOS-tar THET-a' },
+      { icelandic: 'Hvar er...?', translation: 'Where is...?', category: 'directions', pronunciation: 'HVAR air' },
+      { icelandic: 'Ég er að horfa á', translation: 'I am looking at', category: 'shopping', pronunciation: 'Ay-gh air a DHOR-va' },
+      { icelandic: 'Þakka fyrir', translation: 'Thank you', category: 'greetings', pronunciation: 'THAK-ka FVIR' },
+      { icelandic: 'Já', translation: 'Yes', category: 'greetings', pronunciation: 'Yah' },
+      { icelandic: 'Nei', translation: 'No', category: 'greetings', pronunciation: 'Nay' }
+    ];
+
+    let currentCategory = 'all';
+
+    function renderPhrases() {
+      const grid = document.getElementById('phrase-grid');
+      const search = document.getElementById('search-input').value.toLowerCase();
+
+      const filtered = phrases.filter(p => {
+        const matchesCategory = currentCategory === 'all' || p.category === currentCategory;
+        const matchesSearch = p.icelandic.toLowerCase().includes(search) || p.translation.toLowerCase().includes(search);
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty-state">No phrases found. Try a different search!</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="phrase-card">
+          <div class="phrase-icelandic">
+            ${p.icelandic}
+            <button class="btn btn-icon audio-btn" data-text="${p.icelandic}" style="margin-left: var(--space-sm);">🔊</button>
+          </div>
+          <div class="phrase-translation">${p.translation}</div>
+          <div class="phrase-pronunciation">${p.pronunciation}</div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('.audio-btn').forEach(btn => {
+        btn.addEventListener('click', () => playAudio(btn.dataset.text));
+      });
+    }
+
+    function playAudio(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'is-IS';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.getElementById('search-input').addEventListener('input', renderPhrases);
+
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.category;
+        renderPhrases();
+      });
+    });
+
+    renderPhrases();
+  </script>
+</body>
+</html>

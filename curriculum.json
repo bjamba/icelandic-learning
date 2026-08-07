@@ -1,0 +1,128 @@
+{
+  "version": "1.1",
+  "topic": "Icelandic for Travelers",
+  "title": "Icelandic for Travelers",
+  "tagline": "Learn essential Icelandic phrases for your trip to Iceland",
+  "learner": {
+    "objective": "I want to be able to order coffee, ask for directions in Reykjavik, introduce myself to locals, and handle basic daily situations in Icelandic during my trip.",
+    "learning_style": ["hands-on", "audio", "quick-reference"],
+    "comfort_level": "non-technical",
+    "device_target": "responsive",
+    "timeframe": "1-2 weeks, casual pace",
+    "preferred_tone": "encouraging and practical",
+    "engagement_style": "quick practice, immediate application",
+    "favorite_teacher_traits": "make it fun, use real examples, never make me feel dumb"
+  },
+  "builder": {
+    "name": "Claude Code",
+    "links": {
+      "claude": "https://claude.com/claude-code"
+    }
+  },
+  "design": {
+    "aesthetic": "Field Notebook",
+    "theme_css": "assets/theme.css",
+    "primary_device": "responsive",
+    "entry": "dashboard.html"
+  },
+  "modules": [
+    {
+      "id": "module-01",
+      "title": "Greetings & Introductions",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Hello & Basic Greetings", "status": "pending"},
+        {"id": "lesson-02", "title": "Introductions & Names", "status": "pending"},
+        {"id": "lesson-03", "title": "Goodbyes & Farewells", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Audio Flashcards", "status": "pending"},
+        {"id": "exercise-02", "title": "Matching Game", "status": "pending"}
+      ]
+    },
+    {
+      "id": "module-02",
+      "title": "Food & Dining",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Ordering Coffee & Drinks", "status": "pending"},
+        {"id": "lesson-02", "title": "At the Restaurant", "status": "pending"},
+        {"id": "lesson-03", "title": "Grocery Shopping", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Menu Reader", "status": "pending"},
+        {"id": "exercise-02", "title": "Restaurant Role-Play", "status": "pending"}
+      ]
+    },
+    {
+      "id": "module-03",
+      "title": "Directions & Transportation",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Asking for Directions", "status": "pending"},
+        {"id": "lesson-02", "title": "Public Transportation", "status": "pending"},
+        {"id": "lesson-03", "title": "Taxi & Taxis", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Direction Quiz", "status": "pending"},
+        {"id": "exercise-02", "title": "Map Challenge", "status": "pending"}
+      ]
+    },
+    {
+      "id": "module-04",
+      "title": "Shopping & Services",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Basic Shopping Phrases", "status": "pending"},
+        {"id": "lesson-02", "title": "Clothing & Souvenirs", "status": "pending"},
+        {"id": "lesson-03", "title": "Emergencies at Store", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Shopping Simulator", "status": "pending"}
+      ]
+    },
+    {
+      "id": "module-05",
+      "title": "Emergency & Assistance",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Medical Emergencies", "status": "pending"},
+        {"id": "lesson-02", "title": "Police & Safety", "status": "pending"},
+        {"id": "lesson-03", "title": "Travel Assistance", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Emergency Cards", "status": "pending"}
+      ]
+    },
+    {
+      "id": "module-06",
+      "title": "Conversations & Practice",
+      "status": "pending",
+      "lessons": [
+        {"id": "lesson-01", "title": "Small Talk", "status": "pending"},
+        {"id": "lesson-02", "title": "Weather & Small Talk", "status": "pending"},
+        {"id": "lesson-03", "title": "Full Dialogues", "status": "pending"}
+      ],
+      "exercises": [
+        {"id": "exercise-01", "title": "Conversation Builder", "status": "pending"}
+      ]
+    }
+  ],
+  "tools": [
+    {"id": "tool-01", "title": "Phrasebook", "path": "tools/phrasebook.html"},
+    {"id": "tool-02", "title": "Currency Converter", "path": "tools/currency-converter.html"},
+    {"id": "tool-03", "title": "Flashcards", "path": "tools/flashcards.html"}
+  ],
+  "progress": {
+    "started_at": "2026-08-06",
+    "last_session": null,
+    "modules_completed": 0,
+    "modules_total": 6,
+    "current_module": null,
+    "current_lesson": null,
+    "streak_days": 0,
+    "total_sessions": 0,
+    "phrases_learned": 0,
+    "phrases_total": 45
+  }
+}

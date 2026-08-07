@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Direction Quiz</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="../index.html">Module 3</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Direction Quiz</h1>
+    <div class="card">
+      <h2>Match the Direction</h2>
+      <p>Which word means "left"?</p>
+      <button class="btn quiz-option">Vinstri</button>
+      <button class="btn quiz-option">Hegri</button>
+      <button class="btn quiz-option">Rett</button>
+      <button class="btn quiz-option">Nalagt</button>
+      <p id="quiz-feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="card">
+      <h2>Complete the Phrase</h2>
+      <p>"How do I get to...?"</p>
+      <button class="btn quiz-option">Hvernig kem eg til</button>
+      <button class="btn quiz-option">Hvar er</button>
+      <button class="btn quiz-option">Hvaad er</button>
+      <p id="quiz-feedback2" style="margin-top: 10px;"></p>
+    </div>
+    <div class="lesson-nav">
+      <a href="../lesson-03.html" class="btn btn-secondary">Previous</a>
+      <a href="../index.html" class="btn btn-primary">Back to Module 3</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.textContent === 'Vinstri') {
+          this.classList.add('correct');
+          document.getElementById('quiz-feedback').textContent = 'Correct! Vinstri = left';
+          document.getElementById('quiz-feedback').style.color = 'green';
+        } else if (this.textContent === 'Hvernig kem eg til') {
+          this.classList.add('correct');
+          document.getElementById('quiz-feedback2').textContent = 'Correct!';
+          document.getElementById('quiz-feedback2').style.color = 'green';
+        } else {
+          this.classList.add('wrong');
+          const fb = this.parentElement.id === 'quiz-feedback' ? document.getElementById('quiz-feedback') : document.getElementById('quiz-feedback2');
+          fb.textContent = 'Try again!';
+          fb.style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise: Quick Drill</title>
+  <link rel="stylesheet" href="../../assets/theme.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../../dashboard.html">Dashboard</a>
+    <span class="nav-sep"></span>
+    <a href="index.html">Module 1</a>
+    <span class="nav-sep"></span>
+    <span class="nav-current">Exercise</span>
+  </nav>
+  <div class="container">
+    <h1>Quick Drill</h1>
+    <div class="card">
+      <h2>Match the Phrase</h2>
+      <p>Match each Icelandic phrase to its meaning:</p>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Kaedar?</strong> - Hello / Hi
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Halló</strong> - Hello
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Godan dag</strong> - Good day
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Bless</strong> - Bye
+      </div>
+      <div class="card" style="margin: 10px 0;">
+        <strong>Takk</strong> - Thanks / Bye
+      </div>
+    </div>
+    <div class="card">
+      <h2>Quick Quiz</h2>
+      <p>How do you say "Good night"?</p>
+      <button class="btn quiz-option">Goda nott</button>
+      <button class="btn quiz-option">Godan daginn</button>
+      <button class="btn quiz-option">Gudan kvold</button>
+      <p id="quiz-feedback" style="margin-top: 10px;"></p>
+    </div>
+    <div class="lesson-nav">
+      <a href="index.html" class="btn btn-secondary">Previous</a>
+      <a href="../../dashboard.html" class="btn btn-primary">Dashboard</a>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <span>Designed with Claude Code</span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (this.textContent === 'Goda nott') {
+          this.classList.add('correct');
+          document.getElementById('quiz-feedback').textContent = 'Correct!';
+          document.getElementById('quiz-feedback').style.color = 'green';
+        } else {
+          this.classList.add('wrong');
+          document.getElementById('quiz-feedback').textContent = 'Try again!';
+          document.getElementById('quiz-feedback').style.color = 'red';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
