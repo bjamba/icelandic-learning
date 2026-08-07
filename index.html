@@ -3,80 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Icelandic for Travelers — Dashboard</title>
+  <title>Vilkominn! Welcome to Icelandic for Travelers</title>
+  <meta name="description" content="Learn Icelandic for travel - greetings, food, directions, shopping, and emergencies.">
   <link rel="stylesheet" href="assets/theme.css">
   <style>
-    .dashboard-header { text-align: center; padding: var(--space-xl) 0 var(--space-lg); }
-    .objective-box { background: var(--color-primary); color: white; padding: var(--space-lg); border-radius: var(--radius-lg); margin: var(--space-xl) 0; }
-    .objective-box h2 { color: white; margin: 0 0 var(--space-md) 0; }
-    .objective-text { font-size: 1.25rem; line-height: 1.6; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-    .stat-card { text-align: center; padding: var(--space-lg); background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-soft); }
-    .stat-value { font-size: 2rem; font-weight: 700; color: var(--color-primary); }
-    .stat-label { color: var(--color-text-light); font-size: 0.9rem; }
-    .modules-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--space-md); margin-top: var(--space-xl); }
-    .module-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-lg); box-shadow: var(--shadow-soft); transition: transform 0.2s, box-shadow 0.2s; }
-    .module-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
-    .module-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
-    .module-emoji { font-size: 1.5rem; }
-    .module-title { font-weight: 700; font-size: 1.1rem; }
-    .module-progress { margin-top: var(--space-md); }
-    .tool-card { text-align: center; }
-    .tool-card .btn { margin-top: var(--space-md); width: 100%; }
-    .timeline-box { background: var(--color-surface); padding: var(--space-lg); border-radius: var(--radius-md); margin-top: var(--space-xl); }
-    .timeline-item { display: flex; align-items: center; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); }
-    .timeline-item:last-child { border-bottom: none; }
-    .timeline-time { font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-light); min-width: 80px; }
-    .timeline-desc { font-size: 0.95rem; }
-    @media (max-width: 768px) { .modules-grid { grid-template-columns: 1fr; } }
+    /* Dashboard-specific enhancements */
+    .hero-section {
+      text-align: center;
+      padding: var(--space-2xl) 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: var(--space-md);
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-xl);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-2xl);
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    .stat-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .module-card {
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .module-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .module-card a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .module-card a:hover {
+      color: var(--color-primary);
+    }
+
+    .progress-bar {
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    }
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="#">🏠 Dashboard</a>
-    <span class="nav-sep">›</span>
-    <span class="nav-current">Home</span>
+  <nav class="site-header">
+    <div class="container">
+      <div class="site-nav">
+        <span class="nav-current">🏠 Dashboard</span>
+      </div>
+    </div>
   </nav>
 
-  <div class="dashboard-header">
-    <h1>Vilkominn! Welcome</h1>
-    <p>Your Icelandic learning companion</p>
-  </div>
-
   <div class="container">
-    <div class="objective-box">
-      <h2>🎯 Objective</h2>
+    <div class="hero-section animate-fade-in">
+      <h1 class="hero-title">Vilkominn! Welcome</h1>
+      <p class="hero-subtitle">Your Icelandic learning companion for traveling in Iceland</p>
+    </div>
+
+    <div class="objective-box animate-fade-in" style="animation-delay: 0.1s;">
+      <h2>🎯 Your Objective</h2>
       <p class="objective-text">
         "I want to be able to order coffee, ask for directions in Reykjavik, introduce myself to locals, and handle basic daily situations in Icelandic during my trip."
       </p>
     </div>
 
-    <div class="stats-grid">
+    <div class="stats-grid animate-scale-in">
       <div class="stat-card">
-        <div class="stat-value">17%</div>
-        <div class="stat-label">Complete</div>
+        <div class="stat-value" id="progress-total">17%</div>
+        <div class="stat-label">Course Complete</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">0</div>
-        <div class="stat-label">Streak</div>
+        <div class="stat-value" id="streak-count">0</div>
+        <div class="stat-label">Day Streak</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">0</div>
+        <div class="stat-value" id="sessions-count">0</div>
         <div class="stat-label">Sessions</div>
       </div>
       <div class="stat-card">
-        <div class="stat-value">8/45</div>
-        <div class="stat-label">Phrases</div>
+        <div class="stat-value" id="phrases-count">8/45</div>
+        <div class="stat-label">Phrases Learned</div>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card animate-slide-in">
       <div class="card-header">
         <span class="card-title">Quick Tools</span>
-        <span class="card-title">⚡</span>
+        <span>⚡</span>
       </div>
-      <div class="modules-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-        <div class="card tool-card">
+
+      <div class="modules-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div class="module-card">
           <div class="module-header">
             <span class="module-emoji">🗣️</span>
             <span class="module-title">Phrasebook</span>
@@ -84,7 +136,7 @@
           <p>Search and play audio for Icelandic phrases</p>
           <button class="btn btn-primary" onclick="window.location.href='tools/phrasebook.html'">Open Phrasebook</button>
         </div>
-        <div class="card tool-card">
+        <div class="module-card">
           <div class="module-header">
             <span class="module-emoji">💱</span>
             <span class="module-title">Currency Converter</span>
@@ -95,127 +147,165 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card animate-slide-in" style="animation-delay: 0.2s;">
       <div class="card-header">
-        <span class="card-title">Modules</span>
-        <span class="card-title">📖</span>
+        <span class="card-title">Your Modules</span>
+        <span>📖</span>
       </div>
+
       <div class="modules-grid">
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">👋</span>
-            <span class="module-title">Greetings</span>
-          </div>
-          <p>Essential greetings and introductions</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 100%;"></div>
+        <a href="module-01-greetings/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">👋</span>
+              <span class="module-title">Greetings</span>
             </div>
-            <div class="progress-text">Completed</div>
+            <p class="module-desc">Essential greetings and introductions</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 100%;"></div>
+              </div>
+              <div class="progress-text">Completed</div>
+            </div>
           </div>
+        </a>
+
+        <a href="module-02-food/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">☕</span>
+              <span class="module-title">Food & Dining</span>
+            </div>
+            <p class="module-desc">Ordering coffee, asking for the bill, restaurant phrases</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 67%;"></div>
+              </div>
+              <div class="progress-text">67% complete</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="module-03-directions/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">🗺️</span>
+              <span class="module-title">Directions</span>
+            </div>
+            <p class="module-desc">Asking for directions, understanding responses</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="progress-text">Not started</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="module-04-shopping/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">🛍️</span>
+              <span class="module-title">Shopping</span>
+            </div>
+            <p class="module-desc">Buying souvenirs, asking prices, small talk</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="progress-text">Not started</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="module-05-emergency/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">🚨</span>
+              <span class="module-title">Emergency</span>
+            </div>
+            <p class="module-desc">Police, medical, travel assistance</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="progress-text">Not started</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="module-06-conversations/lesson-01.html" class="module-card-link">
+          <div class="module-card">
+            <div class="module-header">
+              <span class="module-emoji">🗣️</span>
+              <span class="module-title">Conversations</span>
+            </div>
+            <p class="module-desc">Practice dialogues for real situations</p>
+            <div class="module-progress">
+              <div class="progress-container">
+                <div class="progress-bar" style="width: 0%;"></div>
+              </div>
+              <div class="progress-text">Not started</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="card animate-slide-in" style="animation-delay: 0.3s;">
+      <div class="card-header">
+        <span class="card-title">Today's Timeline</span>
+        <span>⏰</span>
+      </div>
+
+      <div class="timeline-box">
+        <div class="timeline-item">
+          <div class="timeline-icon">👋</div>
+          <span class="timeline-time">10 min</span>
+          <span class="timeline-desc">Review greetings module</span>
         </div>
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">☕</span>
-            <span class="module-title">Food & Dining</span>
-          </div>
-          <p>Ordering coffee, asking for the bill, restaurant phrases</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 67%;"></div>
-            </div>
-            <div class="progress-text">67% complete</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">☕</div>
+          <span class="timeline-time">15 min</span>
+          <span class="timeline-desc">Food & Dining lesson + practice</span>
         </div>
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">🗺️</span>
-            <span class="module-title">Directions</span>
-          </div>
-          <p>Asking for directions, understanding responses</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 0%;"></div>
-            </div>
-            <div class="progress-text">Not started</div>
-          </div>
-        </div>
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">🛍️</span>
-            <span class="module-title">Shopping</span>
-          </div>
-          <p>Buying souvenirs, asking prices, small talk</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 0%;"></div>
-            </div>
-            <div class="progress-text">Not started</div>
-          </div>
-        </div>
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">🚨</span>
-            <span class="module-title">Emergency</span>
-          </div>
-          <p>Police, medical, travel assistance</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 0%;"></div>
-            </div>
-            <div class="progress-text">Not started</div>
-          </div>
-        </div>
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-emoji">🗣️</span>
-            <span class="module-title">Conversations</span>
-          </div>
-          <p>Practice dialogues for real situations</p>
-          <div class="module-progress">
-            <div class="progress-container">
-              <div class="progress-bar" style="width: 0%;"></div>
-            </div>
-            <div class="progress-text">Not started</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">🗣️</div>
+          <span class="timeline-time">5 min</span>
+          <span class="timeline-desc">Quick phrase drill</span>
         </div>
       </div>
     </div>
 
-    <div class="timeline-box">
-      <h3>Today's Timeline</h3>
-      <div class="timeline-item">
-        <span class="timeline-time">10 min</span>
-        <span class="timeline-desc">Review greetings module</span>
+    <div class="card animate-slide-in" style="animation-delay: 0.4s;">
+      <div class="card-header">
+        <span class="card-title">🎯 Quick Start</span>
+        <span>🚀</span>
       </div>
-      <div class="timeline-item">
-        <span class="timeline-time">15 min</span>
-        <span class="timeline-desc">Food & Dining lesson + practice</span>
-      </div>
-      <div class="timeline-item">
-        <span class="timeline-time">5 min</span>
-        <span class="timeline-desc">Quick phrase drill</span>
-      </div>
-    </div>
 
-    <div class="card">
-      <h3>🎯 Quick Start</h3>
-      <p>Ready to learn some Icelandic? Start with:</p>
-      <ul>
-        <li><a href="module-02-food/lesson-01.html">Lesson: Ordering Coffee & Drinks</a></li>
-        <li><a href="tools/phrasebook.html">Phrasebook with Audio</a></li>
-        <li><a href="tools/currency-converter.html">Currency Converter</a></li>
-      </ul>
+      <div class="quick-start-box">
+        <h3>Ready to learn some Icelandic?</h3>
+        <ul>
+          <li>Start with <a href="module-01-greetings/lesson-01.html">Module 1: Greetings</a></li>
+          <li>Practice with the <a href="tools/phrasebook.html">Phrasebook with Audio</a></li>
+          <li>Check the <a href="tools/currency-converter.html">Currency Converter</a></li>
+          <li>Review your <a href="credits.html">Credits</a> and <a href="style-guide.html">Style Guide</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <span>Designed by Claude Code</span>
-      <span class="footer-links">
+      <div class="footer-logo">
+        <span>🇮🇸</span>
+        <span>Icelandic for Travelers</span>
+      </div>
+      <div class="footer-links">
         <a href="credits.html">Credits</a>
         <a href="style-guide.html">Style Guide</a>
-      </span>
+        <span>Designed by Claude Code</span>
+      </div>
     </div>
   </footer>
 
@@ -225,6 +315,22 @@
     function initDashboard() {
       const progress = JSON.parse(localStorage.getItem(STORAGE_KEY + 'progress') || '{}');
       console.log('Welcome back! Last session:', progress.lastSession);
+
+      // Update stats from localStorage
+      const totalComplete = progress.totalComplete || 0;
+      const phrases = progress.phrases || 0;
+      const streak = progress.streak || 0;
+      const sessions = progress.sessions || 0;
+
+      document.getElementById('progress-total').textContent = `${totalComplete}%`;
+      document.getElementById('phrases-count').textContent = `${phrases}/45`;
+      document.getElementById('streak-count').textContent = streak;
+      document.getElementById('sessions-count').textContent = sessions;
+
+      // Track session
+      progress.lastSession = new Date().toISOString();
+      progress.sessions = sessions + 1;
+      localStorage.setItem(STORAGE_KEY + 'progress', JSON.stringify(progress));
     }
 
     initDashboard();

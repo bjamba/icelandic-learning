@@ -6,44 +6,118 @@
   <title>Phrasebook — Icelandic Learning</title>
   <link rel="stylesheet" href="../assets/theme.css">
   <style>
-    .tool-header { text-align: center; padding: var(--space-xl) 0; }
-    .search-box { position: relative; margin: var(--space-lg) 0; }
-    .search-input { width: 100%; padding: var(--space-md) var(--space-md) var(--space-md) 44px; font-size: 1.2rem; border: 2px solid var(--color-border); border-radius: var(--radius-md); }
-    .search-icon { position: absolute; left: var(--space-sm); top: 50%; transform: translateY(-50%); color: var(--color-text-light); font-size: 1.5rem; }
-    .category-filters { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin: var(--space-lg) 0; }
-    .category-btn { padding: var(--space-xs) var(--space-md); border: 2px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; }
-    .category-btn:hover { border-color: var(--color-primary); }
-    .category-btn.active { background: var(--color-primary); color: white; border-color: var(--color-primary); }
-    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-    .phrase-card { background: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-lg); transition: transform 0.2s; }
-    .phrase-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
-    .phrase-icelandic { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--space-xs); }
-    .phrase-translation { font-size: 1.1rem; color: var(--color-text-light); font-style: italic; }
-    .phrase-pronunciation { font-family: var(--font-mono); font-size: 0.9rem; color: var(--color-text-light); margin-top: var(--space-sm); display: inline-block; }
-    .empty-state { text-align: center; padding: var(--space-xl); color: var(--color-text-light); }
+    /* Phrasebook-specific styles */
+    .tool-header {
+      text-align: center;
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .search-box {
+      position: relative;
+      margin: var(--space-lg) 0;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: var(--space-md) var(--space-md) var(--space-md) 48px;
+      font-size: 1.2rem;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: var(--space-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: 1.5rem;
+    }
+
+    .category-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin: var(--space-lg) 0;
+    }
+
+    .category-btn {
+      padding: var(--space-xs) var(--space-md);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 600;
+      color: var(--color-text-light);
+    }
+
+    .category-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .category-btn.active {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
+      border-color: var(--color-primary);
+    }
+
+    .phrase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+
+    .phrase-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--space-2xl);
+      color: var(--color-text-light);
+    }
+
+    @media (max-width: 768px) {
+      .phrase-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="../dashboard.html">🏠 Dashboard</a>
-    <span class="nav-sep">›</span>
-    <span class="nav-current">Phrasebook</span>
+  <nav class="site-header">
+    <div class="container">
+      <div class="site-nav">
+        <a href="../index.html">🏠 Dashboard</a>
+        <span class="nav-sep">›</span>
+        <span class="nav-current">Phrasebook</span>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
     <div class="tool-header">
       <h1>🗣️ Phrasebook</h1>
-      <p>Search and play audio for Icelandic phrases</p>
+      <p style="color: var(--color-text-light); margin-top: var(--space-sm);">Search and play audio for Icelandic phrases</p>
     </div>
 
     <div class="card">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="search-input" class="search-input" placeholder="Search phrases..." autocomplete="off">
+        <input type="text" id="search-input" class="search-input" placeholder="Search phrases in Icelandic or English..." autocomplete="off">
       </div>
 
       <div class="category-filters">
-        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn active" data-category="all">All Phrases</button>
         <button class="category-btn" data-category="greetings">Greetings</button>
         <button class="category-btn" data-category="food">Food</button>
         <button class="category-btn" data-category="directions">Directions</button>
@@ -59,11 +133,14 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <span>Designed with Claude Code</span>
-      <span class="footer-links">
+      <div class="footer-logo">
+        <span>🇮🇸</span>
+        <span>Icelandic for Travelers</span>
+      </div>
+      <div class="footer-links">
         <a href="../credits.html">Credits</a>
         <a href="../style-guide.html">Style Guide</a>
-      </span>
+      </div>
     </div>
   </footer>
 
@@ -110,18 +187,26 @@
       });
 
       if (filtered.length === 0) {
-        grid.innerHTML = '<div class="empty-state">No phrases found. Try a different search!</div>';
+        grid.innerHTML = `
+          <div class="empty-state">
+            <h3 style="margin-bottom: var(--space-sm);">No phrases found</h3>
+            <p>Try a different search term or category</p>
+          </div>
+        `;
         return;
       }
 
       grid.innerHTML = filtered.map(p => `
-        <div class="phrase-card">
+        <div class="card phrase-card animate-fade-in">
           <div class="phrase-icelandic">
-            ${p.icelandic}
-            <button class="btn btn-icon audio-btn" data-text="${p.icelandic}" style="margin-left: var(--space-sm);">🔊</button>
+            <span>${p.icelandic}</span>
+            <button class="btn btn-icon audio-btn" data-text="${p.icelandic}">🔊</button>
           </div>
           <div class="phrase-translation">${p.translation}</div>
           <div class="phrase-pronunciation">${p.pronunciation}</div>
+          <div style="margin-top: var(--space-sm); text-align: right;">
+            <span style="font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">${p.category}</span>
+          </div>
         </div>
       `).join('');
 
@@ -133,7 +218,7 @@
     function playAudio(text) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'is-IS';
-      utterance.rate = 0.8;
+      utterance.rate = 0.85;
       window.speechSynthesis.speak(utterance);
     }
 

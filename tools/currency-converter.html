@@ -6,29 +6,90 @@
   <title>Currency Converter — Icelandic Learning</title>
   <link rel="stylesheet" href="../assets/theme.css">
   <style>
-    .tool-header { text-align: center; padding: var(--space-xl) 0; }
-    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-top: var(--space-xl); }
-    .converter-section { display: flex; flex-direction: column; gap: var(--space-md); }
-    .rate-info { background: var(--color-bg); padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem; }
-    .update-time { color: var(--color-text-light); font-size: 0.75rem; text-align: center; margin-top: var(--space-lg); }
-    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+    /* Currency Converter-specific styles */
+    .tool-header {
+      text-align: center;
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .converter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+    }
+
+    .rate-info {
+      background: linear-gradient(135deg, var(--color-bg-accent) 0%, var(--color-bg) 100%);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+    }
+
+    .rate-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .rate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--color-surface);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .rate-item span:first-child {
+      color: var(--color-text-light);
+      font-weight: 500;
+    }
+
+    .rate-item span:last-child {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .update-time {
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: var(--space-md);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .converter-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <nav class="site-nav">
-    <a href="../dashboard.html">🏠 Dashboard</a>
-    <span class="nav-sep">›</span>
-    <span class="nav-current">Currency Converter</span>
+  <nav class="site-header">
+    <div class="container">
+      <div class="site-nav">
+        <a href="../index.html">🏠 Dashboard</a>
+        <span class="nav-sep">›</span>
+        <span class="nav-current">Currency Converter</span>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
     <div class="tool-header">
       <h1>💱 Currency Converter</h1>
-      <p>Real-time Icelandic Króna (ISK) exchange rates</p>
+      <p style="color: var(--color-text-light); margin-top: var(--space-sm);">Real-time Icelandic Króna (ISK) exchange rates</p>
     </div>
 
-    <div class="card">
-      <h2>Convert to Icelandic Króna (ISK)</h2>
+    <div class="card animate-fade-in">
+      <div class="card-header">
+        <span class="card-title">Convert to Icelandic Króna (ISK)</span>
+        <span>向外</span>
+      </div>
+
       <div class="currency-converter">
         <div class="converter-section">
           <label for="from-amount" style="font-size: 0.85rem; color: var(--color-text-light);">Amount</label>
@@ -47,19 +108,19 @@
         </div>
 
         <div class="currency-result">
-          <div class="currency-display">
-            <span id="to-amount" class="currency-input" style="background: var(--color-primary); color: white; font-size: 1.5rem;">13,700</span>
-          </div>
-          <div class="currency-select" style="margin-top: var(--space-sm);">
-            <span>ISK</span>
-          </div>
+          <div class="currency-result-value" id="to-amount">13,700</div>
+          <div style="font-weight: 600; margin-bottom: var(--space-xs);">ISK</div>
           <div class="currency-rate" id="exchange-rate">1 USD = 137.00 ISK</div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Convert from Icelandic Króna (ISK)</h2>
+    <div class="card animate-slide-in" style="animation-delay: 0.1s;">
+      <div class="card-header">
+        <span class="card-title">Convert from Icelandic Króna (ISK)</span>
+        <span> inward</span>
+      </div>
+
       <div class="currency-converter">
         <div class="converter-section">
           <label for="isk-amount" style="font-size: 0.85rem; color: var(--color-text-light);">Amount (ISK)</label>
@@ -78,26 +139,41 @@
         </div>
 
         <div class="currency-result">
-          <div class="currency-display">
-            <span id="isk-result" class="currency-input" style="background: var(--color-primary); color: white; font-size: 1.5rem;">73.00</span>
-          </div>
-          <div class="currency-select" style="margin-top: var(--space-sm);">
-            <span id="to-currency-name">GBP</span>
-          </div>
+          <div class="currency-result-value" id="isk-result">73.00</div>
+          <div style="font-weight: 600; margin-bottom: var(--space-xs);" id="to-currency-name">GBP</div>
           <div class="currency-rate" id="isk-rate">1 ISK = 0.0073 GBP</div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Current Rates</h2>
-      <div class="rate-info" id="rates-list">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
-          <div><strong>USD:</strong> <span id="rate-usd">137.00</span> ISK</div>
-          <div><strong>EUR:</strong> <span id="rate-eur">147.50</span> ISK</div>
-          <div><strong>GBP:</strong> <span id="rate-gbp">172.60</span> ISK</div>
-          <div><strong>CAD:</strong> <span id="rate-cad">101.20</span> ISK</div>
-          <div><strong>JPY:</strong> <span id="rate-jpy">0.92</span> ISK</div>
+    <div class="card animate-scale-in" style="animation-delay: 0.2s;">
+      <div class="card-header">
+        <span class="card-title">Current Rates</span>
+        <span>📊</span>
+      </div>
+
+      <div class="rate-info">
+        <div class="rate-grid">
+          <div class="rate-item">
+            <span>USD</span>
+            <span id="rate-usd">137.00</span>
+          </div>
+          <div class="rate-item">
+            <span>EUR</span>
+            <span id="rate-eur">147.50</span>
+          </div>
+          <div class="rate-item">
+            <span>GBP</span>
+            <span id="rate-gbp">172.60</span>
+          </div>
+          <div class="rate-item">
+            <span>CAD</span>
+            <span id="rate-cad">101.20</span>
+          </div>
+          <div class="rate-item">
+            <span>JPY</span>
+            <span id="rate-jpy">0.92</span>
+          </div>
         </div>
       </div>
       <p class="update-time" id="update-time">Rates updated: Just now</p>
@@ -106,11 +182,14 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <span>Designed with Claude Code</span>
-      <span class="footer-links">
+      <div class="footer-logo">
+        <span>🇮🇸</span>
+        <span>Icelandic for Travelers</span>
+      </div>
+      <div class="footer-links">
         <a href="../credits.html">Credits</a>
         <a href="../style-guide.html">Style Guide</a>
-      </span>
+      </div>
     </div>
   </footer>
 
