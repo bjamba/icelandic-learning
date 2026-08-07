@@ -27,7 +27,7 @@ Free — everything runs in your browser, no accounts needed.
 
 ## ⚡ Quick Start
 
-1. Open `dashboard.html` to see your progress
+1. Open `index.html` (or visit the GitHub Pages URL) to see your progress
 2. Start with Module 1: Greetings & Introductions
 3. Practice with the phrasebook tool
 4. Track your streak!
